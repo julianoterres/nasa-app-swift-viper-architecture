@@ -20,7 +20,6 @@ class PhotoListViewController: UIViewController {
   init(presenter: PhotoListPresenterProtocolOutput) {
     self.presenter = presenter
     super.init(nibName: nil, bundle: nil)
-    self.presenter.viewController = self
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -92,7 +91,7 @@ class PhotoListViewController: UIViewController {
   @objc func fetchPhotos() {
     if let title = self.segmentedControl.titleForSegment(at: self.segmentedControl.selectedSegmentIndex) {
       self.showLoader(status: true)
-      self.presenter.fetchPhotos(probe: title)
+      self.presenter.photosDidFetch(probe: title)
     }
   }
   
@@ -115,7 +114,7 @@ extension PhotoListViewController: PhotoListViewControllerProtocol {
     self.showLoader(status: false)
   }
   
-  func error(message: String) {
+  func errorFound(message: String) {
     self.showLoader(status: false)
     let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alertViewController.addAction(UIAlertAction(title: "OK", style: .default))

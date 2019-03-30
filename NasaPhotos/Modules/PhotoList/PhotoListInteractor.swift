@@ -10,7 +10,6 @@ class PhotoListInteractor {
   
   init(worker: PhotoListWorkerProtocolOutput) {
     self.worker = worker
-    self.worker.interactor = self
   }
   
 }
@@ -19,8 +18,8 @@ class PhotoListInteractor {
 
 extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 
-  func fetchPhotos(probe: String) {
-    self.worker.fetchPhotos(probe: probe)
+  func photosDidFetch(probe: String) {
+    self.worker.photosDidFetch(probe: probe, date: Date())
   }
   
 }
@@ -29,18 +28,18 @@ extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 
 extension PhotoListInteractor: PhotoListInteractorProtocolInput {
   
-  func receivePhotos(photos: [PhotoEntityApi]) {
+  func photosDidFetch(photos: [PhotoEntityApi]) {
     let photos = photos.map ({ (photo) -> PhotoEntityView in
       return PhotoEntityView(
         urlImage: photo.img_src,
         cameraName: photo.camera?.name
       )
     })
-    self.presenter?.receivePhotos(photos: photos)
+    self.presenter?.photosDidFetch(photos: photos)
   }
   
-  func errorReceivePhotos(message: String) {
-    self.presenter?.errorReceivePhotos(message: message)
+  func errorPhotosDidFetch(message: String) {
+    self.presenter?.errorPhotosDidFetch(message: message)
   }
   
 }

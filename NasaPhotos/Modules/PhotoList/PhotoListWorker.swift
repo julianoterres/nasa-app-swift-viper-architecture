@@ -20,8 +20,8 @@ class PhotoListWorker {
 
 extension PhotoListWorker: PhotoListWorkerProtocolOutput {
   
-  func fetchPhotos(probe: String) {
-    let parametersMerge = ["earth_date": "2015-6-3"]
+  func photosDidFetch(probe: String, date: Date) {
+    let parametersMerge = ["earth_date": "2015-06-03"]
     let url = self.api.urlRoversPhotos(probe: probe)
     let parameters = self.api.mountParameters(parameters: parametersMerge)
     self.network.request(url: url, method: .get, parameters: parameters)
@@ -36,14 +36,14 @@ extension PhotoListWorker: NetworkProtocolOutput {
   func success(response: Data) {
     do {
       let listPhotos = try JSONDecoder().decode(PhotoListEntityApi.self, from: response)
-      self.interactor?.receivePhotos(photos: listPhotos.photos)
+      self.interactor?.photosDidFetch(photos: listPhotos.photos)
     } catch let error {
-     self.interactor?.errorReceivePhotos(message: error.localizedDescription)
+     self.interactor?.errorPhotosDidFetch(message: error.localizedDescription)
     }
   }
   
   func failure(error: Error) {
-    self.interactor?.errorReceivePhotos(message: error.localizedDescription)
+    self.interactor?.errorPhotosDidFetch(message: error.localizedDescription)
   }
   
 }

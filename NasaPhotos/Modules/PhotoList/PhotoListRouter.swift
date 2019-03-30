@@ -5,10 +5,6 @@ import UIKit
 
 class PhotoListRouter {
   
-  init() {
-    
-  }
-  
   func root() {
     
     if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window {
@@ -18,7 +14,10 @@ class PhotoListRouter {
       let presenter = PhotoListPresenter(interactor: interactor)
       let viewController = PhotoListViewController(presenter: presenter)
       let navigationController = UINavigationController()
-      navigationController.viewControllers = [viewController]      
+      presenter.viewController = viewController
+      interactor.presenter = presenter
+      worker.interactor = interactor
+      navigationController.viewControllers = [viewController]
       window.rootViewController = navigationController
       window.makeKeyAndVisible()
     }

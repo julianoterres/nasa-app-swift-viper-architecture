@@ -11,7 +11,6 @@ class PhotoListPresenter {
   
   init(interactor: PhotoListInteractorProtocolOutput) {
     self.interactor = interactor
-    self.interactor.presenter = self
   }
   
 }
@@ -20,8 +19,8 @@ class PhotoListPresenter {
 
 extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
   
-  func fetchPhotos(probe: String) {
-    self.interactor.fetchPhotos(probe: probe)
+  func photosDidFetch(probe: String) {
+    self.interactor.photosDidFetch(probe: probe)
   }
   
 }
@@ -30,12 +29,12 @@ extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
 
 extension PhotoListPresenter: PhotoListPresenterProtocolInput {
   
-  func receivePhotos(photos: [PhotoEntityView]) {
+  func photosDidFetch(photos: [PhotoEntityView]) {
     self.viewController?.reloadPhotos(photos: photos)
   }
   
-  func errorReceivePhotos(message: String) {
-    self.viewController?.error(message: message)
+  func errorPhotosDidFetch(message: String) {
+    self.viewController?.errorFound(message: message)
   }
   
 }

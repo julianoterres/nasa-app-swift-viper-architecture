@@ -1,30 +1,32 @@
 
+import Foundation
+
 protocol PhotoListViewControllerProtocol: class {
   func reloadPhotos(photos: [PhotoEntityView])
-  func error(message: String)
+  func errorFound(message: String)
 }
 
 protocol PhotoListPresenterProtocolOutput: class {
   var viewController: PhotoListViewControllerProtocol? { get set }
-  func fetchPhotos(probe: String)
+  func photosDidFetch(probe: String)
 }
 
 protocol PhotoListPresenterProtocolInput: class {
-  func receivePhotos(photos: [PhotoEntityView])
-  func errorReceivePhotos(message: String)
+  func photosDidFetch(photos: [PhotoEntityView])
+  func errorPhotosDidFetch(message: String)
 }
 
 protocol PhotoListInteractorProtocolOutput: class {
   var presenter: PhotoListPresenterProtocolInput? { get set }
-  func fetchPhotos(probe: String)
+  func photosDidFetch(probe: String)
 }
 
 protocol PhotoListInteractorProtocolInput: class {
-  func receivePhotos(photos: [PhotoEntityApi])
-  func errorReceivePhotos(message: String)
+  func photosDidFetch(photos: [PhotoEntityApi])
+  func errorPhotosDidFetch(message: String)
 }
 
 protocol PhotoListWorkerProtocolOutput: class {
   var interactor: PhotoListInteractorProtocolInput? { get set }
-  func fetchPhotos(probe: String)
+  func photosDidFetch(probe: String, date: Date)
 }

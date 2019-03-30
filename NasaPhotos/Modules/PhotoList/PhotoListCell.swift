@@ -2,6 +2,8 @@
 import UIKit
 import Kingfisher
 
+// MARK: Methods of PhotoListCell
+
 class PhotoListCell: UICollectionViewCell {
   
   private let img = UIImageView()
@@ -17,11 +19,11 @@ class PhotoListCell: UICollectionViewCell {
   }
   
   private func configElements(photo: PhotoEntityView) {
-    self.contentView.backgroundColor = .red
     self.contentView.clipsToBounds = true
     self.img.contentMode = .scaleAspectFill
+    self.img.kf.indicatorType = .activity
     if let urlImage = photo.urlImage, let url = URL(string: urlImage) {
-      self.img.kf.setImage(with: url)
+      self.img.kf.setImage(with: url, options: [.transition(.fade(0.2))])
     }
   }
   

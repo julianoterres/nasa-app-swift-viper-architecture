@@ -176,7 +176,7 @@
 				3AFAF1C9224C16FB005CF41C /* App */,
 				3AFAF1E0224D01AC005CF41C /* Commoms */,
 				3AFAF1C8224C16DC005CF41C /* Resources */,
-				3AFAF1CB224C1731005CF41C /* Screens */,
+				3AFAF1CB224C1731005CF41C /* Modules */,
 				3AFAF1CA224C171F005CF41C /* SupportFiles */,
 			);
 			path = NasaPhotos;
@@ -224,14 +224,14 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
-		3AFAF1CB224C1731005CF41C /* Screens */ = {
+		3AFAF1CB224C1731005CF41C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				3AFAF1CE224C1754005CF41C /* LaunchScreen */,
 				3AFAF1CD224C1741005CF41C /* PhotoDetail */,
 				3AFAF1CC224C1739005CF41C /* PhotoList */,
 			);
-			path = Screens;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		3AFAF1CC224C1739005CF41C /* PhotoList */ = {
