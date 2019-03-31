@@ -9,7 +9,12 @@ class PhotoListViewController: UIViewController {
   private let segmentedControl = UISegmentedControl(items: [ProbeEnun.curiosity.rawValue, ProbeEnun.opportunity.rawValue, ProbeEnun.spirit.rawValue])
   private let collectionViewLayout = UICollectionViewFlowLayout()
   private var collectionView: UICollectionView!
+  private let loaderStackView = UIStackView()
   private let loader = UIActivityIndicatorView()
+  private let labelLoader = UILabel()
+  private let viewRetry = UIView()
+  private let labelRetry = UILabel()
+  private let retryButton = UIButton()
   
   // MARK: Variables of class
   var presenter: PhotoListPresenterProtocolOutput?
@@ -39,7 +44,12 @@ class PhotoListViewController: UIViewController {
   
   private func createElements() {
     self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
-    self.view.addSubview(self.loader)
+    self.loaderStackView.addArrangedSubview(self.labelLoader)
+    self.loaderStackView.addArrangedSubview(self.loader)
+    self.viewRetry.addSubview(self.labelRetry)
+    self.viewRetry.addSubview(self.retryButton)
+    self.view.addSubview(self.loaderStackView)
+    self.view.addSubview(viewRetry)
     self.view.addSubview(self.segmentedControl)
     self.view.addSubview(self.collectionView)
   }
@@ -58,8 +68,24 @@ class PhotoListViewController: UIViewController {
     self.collectionView.backgroundColor = .white
     self.collectionView.register(PhotoListCell.self, forCellWithReuseIdentifier: "PhotoListCell")
     self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
+    self.loaderStackView.axis = .vertical
+    self.loaderStackView.distribution = .fill
+    self.loaderStackView.alignment = .center
+    self.loaderStackView.spacing = 15
+    self.labelLoader.text = "Aguarde, estamos pesquisando\nas imagens para você"
+    self.labelLoader.textAlignment = .center
+    self.labelLoader.numberOfLines = 0
     self.loader.color = .black
     self.loader.startAnimating()
+    self.viewRetry.backgroundColor = .white
+    self.labelRetry.text = "Ocorreu algum erro na nossa pesquisa."
+    self.labelRetry.textAlignment = .center
+    self.labelRetry.numberOfLines = 0
+    self.labelRetry.textColor = .black
+    self.retryButton.setTitle("Tentar novamente", for: .normal)
+    self.retryButton.backgroundColor = UIColor(red:0.00, green:0.46, blue:0.97, alpha:1.0)
+    self.retryButton.addTarget(self, action: #selector(fetchPhotos), for: .touchUpInside)
+    self.self.viewRetry.isHidden = true
   }
   
   private func setContrainsInElemens() {
@@ -75,29 +101,42 @@ class PhotoListViewController: UIViewController {
       self.collectionView.topAnchor.constraint(equalTo: self.segmentedControl.bottomAnchor, constant: 15),
       self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
       self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
-      self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+      self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
     ])
-    self.loader.translatesAutoresizingMaskIntoConstraints = false
+    self.loaderStackView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      self.loader.topAnchor.constraint(equalTo: self.segmentedControl.bottomAnchor, constant: 0),
-      self.loader.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
-      self.loader.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
-      self.loader.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0),
+      self.loaderStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+      self.loaderStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+      self.loaderStackView.heightAnchor.constraint(equalToConstant: 100)
+    ])
+    self.viewRetry.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      self.viewRetry.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+      self.viewRetry.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+      self.viewRetry.heightAnchor.constraint(equalToConstant: 170),
+      self.viewRetry.widthAnchor.constraint(equalToConstant: 250)
+    ])
+    self.labelRetry.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      self.labelRetry.topAnchor.constraint(equalTo: self.viewRetry.topAnchor, constant: 0),
+      self.labelRetry.leftAnchor.constraint(equalTo: self.viewRetry.leftAnchor, constant: 0),
+      self.labelRetry.rightAnchor.constraint(equalTo: self.viewRetry.rightAnchor, constant: 0),
+      self.labelRetry.bottomAnchor.constraint(equalTo: self.retryButton.topAnchor, constant: 0)
+    ])
+    self.retryButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      self.retryButton.topAnchor.constraint(equalTo: self.labelRetry.bottomAnchor, constant: 15),
+      self.retryButton.leftAnchor.constraint(equalTo: self.viewRetry.leftAnchor, constant: 0),
+      self.retryButton.rightAnchor.constraint(equalTo: self.viewRetry.rightAnchor, constant: 0),
+      self.retryButton.bottomAnchor.constraint(equalTo: self.viewRetry.bottomAnchor, constant: 0),
+      self.retryButton.heightAnchor.constraint(equalToConstant: 70)
     ])
   }
   
   @objc func fetchPhotos() {
-    if let title = self.segmentedControl.titleForSegment(at: self.segmentedControl.selectedSegmentIndex) {
-      self.showLoader(status: true)
-      self.presenter?.photosDidFetch(probe: title)
-    }
-  }
-  
-  func showLoader(status: Bool) {
-    self.collectionView.isHidden = status
-    if status {
-      self.loader.startAnimating()
-    }
+    self.viewRetry.isHidden = true
+    self.collectionView.isHidden = true
+    self.presenter?.photosDidFetch(segmentIndex: self.segmentedControl.selectedSegmentIndex)
   }
   
 }
@@ -109,11 +148,12 @@ extension PhotoListViewController: PhotoListViewControllerProtocol {
   func reloadPhotos(photos: [PhotoView]) {
     self.photos = photos
     self.collectionView.reloadData()
-    self.showLoader(status: false)
+    self.collectionView.isHidden = false
   }
   
   func errorFound() {
-    self.showLoader(status: false)
+    self.collectionView.isHidden = true
+    self.viewRetry.isHidden = false
   }
   
 }

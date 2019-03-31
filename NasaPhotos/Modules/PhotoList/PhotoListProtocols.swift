@@ -11,7 +11,7 @@ protocol PhotoListPresenterProtocolOutput: class {
   var router: PhotoListRouterWireframe? { get set }
   var interactor: PhotoListInteractorProtocolOutput? { get set }
   var viewController: PhotoListViewControllerProtocol? { get set }
-  func photosDidFetch(probe: String)
+  func photosDidFetch(segmentIndex: Int)
   func didSelectPhoto(photo: PhotoView)
 }
 
@@ -41,6 +41,5 @@ protocol PhotoListWorkerProtocolOutput: class {
 protocol PhotoListRouterWireframe: class {
   var viewController: UIViewController? { get set }
   func build() -> UIViewController
-  func showAlert(title: String, message: String)
   func pushToPhotoDetails(photo: PhotoView)
 }

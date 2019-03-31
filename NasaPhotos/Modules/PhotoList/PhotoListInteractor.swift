@@ -7,6 +7,8 @@ class PhotoListInteractor {
   
   var worker: PhotoListWorkerProtocolOutput?
   weak var presenter: PhotoListPresenterProtocolInput?
+  var date = Date()
+  var probe = ""
   
 }
 
@@ -15,7 +17,8 @@ class PhotoListInteractor {
 extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 
   func photosDidFetch(probe: String) {
-    self.worker?.photosDidFetch(probe: probe, date: Date())
+    self.probe = probe
+    self.worker?.photosDidFetch(probe: self.probe, date: self.date)
   }
   
 }
@@ -25,13 +28,19 @@ extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 extension PhotoListInteractor: PhotoListInteractorProtocolInput {
   
   func photosDidFetch(photos: [PhotoApi]) {
-    let photos = photos.map ({ (photo) -> PhotoView in
-      return PhotoView(
-        urlImage: photo.img_src,
-        cameraName: photo.camera?.name
-      )
-    })
-    self.presenter?.photosDidFetch(photos: photos)
+    if photos.count > 0 {
+      let photos = photos.map ({ (photo) -> PhotoView in
+        return PhotoView(
+          urlImage: photo.img_src,
+          cameraName: photo.camera?.name
+        )
+      })
+      self.date = Date()
+      self.presenter?.photosDidFetch(photos: photos)
+    } else {
+      self.date = self.date.adding(.day, -1)
+      self.worker?.photosDidFetch(probe: self.probe, date: self.date)
+    }
   }
   
   func errorPhotosDidFetch(message: String) {

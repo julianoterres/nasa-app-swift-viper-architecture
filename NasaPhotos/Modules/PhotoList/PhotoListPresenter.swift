@@ -9,6 +9,7 @@ class PhotoListPresenter {
   weak var viewController: PhotoListViewControllerProtocol?
   var router: PhotoListRouterWireframe?
   var interactor: PhotoListInteractorProtocolOutput?
+  let probes = [ProbeEnun.curiosity.rawValue, ProbeEnun.opportunity.rawValue, ProbeEnun.spirit.rawValue]
   
 }
 
@@ -16,8 +17,8 @@ class PhotoListPresenter {
 
 extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
   
-  func photosDidFetch(probe: String) {
-    self.interactor?.photosDidFetch(probe: probe)
+  func photosDidFetch(segmentIndex: Int) {
+    self.interactor?.photosDidFetch(probe: probes[segmentIndex])
   }
   
   func didSelectPhoto(photo: PhotoView) {
@@ -36,7 +37,6 @@ extension PhotoListPresenter: PhotoListPresenterProtocolInput {
   
   func errorPhotosDidFetch(message: String) {
     self.viewController?.errorFound()
-    self.router?.showAlert(title: "Alert", message: message)
   }
   
 }

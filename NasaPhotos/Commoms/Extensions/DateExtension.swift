@@ -10,4 +10,8 @@ extension Date {
     return df.string(from: self)
   }
   
+  func adding(_ comp: Calendar.Component, _ value: Int) -> Date {
+    return Calendar.current.date(byAdding: comp, value: value, to: self)!
+  }
+  
 }
