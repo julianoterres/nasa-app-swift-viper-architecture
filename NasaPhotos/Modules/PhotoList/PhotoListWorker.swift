@@ -15,9 +15,9 @@ class PhotoListWorker {
 
 extension PhotoListWorker: PhotoListWorkerProtocolOutput {
   
-  func photosDidFetch(probe: String, date: Date) {
+  func photosDidFetch(sonda: String, date: Date) {
     let parametersMerge = ["earth_date": date.convert_to_yyyy_mm_dd]
-    if let url = self.api?.urlRoversPhotos(probe: probe), let parameters = self.api?.mountParameters(parameters: parametersMerge) {
+    if let url = self.api?.urlRoversPhotos(sonda: sonda), let parameters = self.api?.mountParameters(parameters: parametersMerge) {
       self.network?.request(url: url, method: .get, parameters: parameters)
     }
   }

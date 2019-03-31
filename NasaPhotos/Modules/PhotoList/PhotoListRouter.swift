@@ -30,7 +30,7 @@ class PhotoListRouter: PhotoListRouterWireframe {
   }
   
   func pushToPhotoDetails(photo: PhotoView) {
-    let viewController = PhotoDetailRouter().build()
+    let viewController = PhotoDetailRouter().build(photo: photo)
     self.viewController?.navigationController?.pushViewController(viewController, animated: true)
   }
   

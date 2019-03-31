@@ -5,8 +5,8 @@ final class API {
   
   private let baseUlr = "https://api.nasa.gov/mars-photos/api/v1/"
   
-  func urlRoversPhotos(probe: String) -> URL {
-    return URL(string: baseUlr + "rovers/" + probe + "/photos")!
+  func urlRoversPhotos(sonda: String) -> URL {
+    return URL(string: baseUlr + "rovers/" + sonda + "/photos")!
   }
   
   func mountParameters(parameters: [String:Any]) -> [String:Any] {

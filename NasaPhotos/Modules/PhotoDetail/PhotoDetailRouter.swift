@@ -7,8 +7,9 @@ class PhotoDetailRouter: PhotoDetailRouterWireframe {
   
   weak var viewController: UIViewController?
   
-  func build() -> UIViewController {
+  func build(photo: PhotoView) -> UIViewController {
     let viewController = PhotoDetailViewController()
+    viewController.photo = photo
     return viewController
   }
   

@@ -1,5 +1,5 @@
 
-enum ProbeEnun: String {
+enum SondaEnun: String {
   case curiosity
   case opportunity
   case spirit

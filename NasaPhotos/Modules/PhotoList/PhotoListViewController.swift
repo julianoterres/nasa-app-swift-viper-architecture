@@ -6,7 +6,7 @@ import UIKit
 class PhotoListViewController: UIViewController {
   
   // MARK: Elements of class
-  private let segmentedControl = UISegmentedControl(items: [ProbeEnun.curiosity.rawValue, ProbeEnun.opportunity.rawValue, ProbeEnun.spirit.rawValue])
+  private let segmentedControl = UISegmentedControl(items: [SondaEnun.curiosity.rawValue, SondaEnun.opportunity.rawValue, SondaEnun.spirit.rawValue])
   private let collectionViewLayout = UICollectionViewFlowLayout()
   private var collectionView: UICollectionView!
   private let loaderStackView = UIStackView()

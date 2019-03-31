@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		196E6028B779C27BFA78A7F9 /* Pods_NasaPhotosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94D0BC83BA9BE9236ED076 /* Pods_NasaPhotosTests.framework */; };
+		3A0D1EC322515C3E0004B161 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D1EC222515C3E0004B161 /* .gitignore */; };
 		3A314CA7224FDBAF003D3FBB /* PhotoListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A314CA6224FDBAF003D3FBB /* PhotoListProtocols.swift */; };
 		3A314CAA224FDBEC003D3FBB /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A314CA9224FDBEC003D3FBB /* EnumDefinition.swift */; };
 		3AE6118022500009002776AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6117F22500009002776AB /* API.swift */; };
@@ -57,6 +58,7 @@
 		123DFE6E4ACAA6097D2A56E4 /* Pods-NasaPhotosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaPhotosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NasaPhotosTests/Pods-NasaPhotosTests.release.xcconfig"; sourceTree = "<group>"; };
 		1F1F7EB61E9A3048585F9184 /* Pods-NasaPhotosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaPhotosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NasaPhotosUITests/Pods-NasaPhotosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2ED43140D9B646BF8737BDBF /* Pods-NasaPhotosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaPhotosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NasaPhotosUITests/Pods-NasaPhotosUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3A0D1EC222515C3E0004B161 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3A314CA6224FDBAF003D3FBB /* PhotoListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListProtocols.swift; sourceTree = "<group>"; };
 		3A314CA9224FDBEC003D3FBB /* EnumDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefinition.swift; sourceTree = "<group>"; };
 		3AE6117F22500009002776AB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -177,12 +179,13 @@
 		3AFAF18E224C16AD005CF41C = {
 			isa = PBXGroup;
 			children = (
+				3A0D1EC222515C3E0004B161 /* .gitignore */,
+				06A0F3054B891B18BFC7CB2E /* Frameworks */,
 				3AFAF199224C16AD005CF41C /* NasaPhotos */,
 				3AFAF1AE224C16AF005CF41C /* NasaPhotosTests */,
 				3AFAF1B9224C16AF005CF41C /* NasaPhotosUITests */,
-				3AFAF198224C16AD005CF41C /* Products */,
 				36CCD5C178A413B7C33DCBB2 /* Pods */,
-				06A0F3054B891B18BFC7CB2E /* Frameworks */,
+				3AFAF198224C16AD005CF41C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -421,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFAF1A5224C16AE005CF41C /* LaunchScreen.storyboard in Resources */,
+				3A0D1EC322515C3E0004B161 /* .gitignore in Resources */,
 				3AFAF1A2224C16AE005CF41C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

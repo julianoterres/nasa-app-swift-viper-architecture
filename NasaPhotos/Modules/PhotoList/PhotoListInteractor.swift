@@ -8,7 +8,7 @@ class PhotoListInteractor {
   var worker: PhotoListWorkerProtocolOutput?
   weak var presenter: PhotoListPresenterProtocolInput?
   var date = Date()
-  var probe = ""
+  var sonda = ""
   
 }
 
@@ -16,9 +16,9 @@ class PhotoListInteractor {
 
 extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 
-  func photosDidFetch(probe: String) {
-    self.probe = probe
-    self.worker?.photosDidFetch(probe: self.probe, date: self.date)
+  func photosDidFetch(sonda: String) {
+    self.sonda = sonda
+    self.worker?.photosDidFetch(sonda: self.sonda, date: self.date)
   }
   
 }
@@ -32,14 +32,15 @@ extension PhotoListInteractor: PhotoListInteractorProtocolInput {
       let photos = photos.map ({ (photo) -> PhotoView in
         return PhotoView(
           urlImage: photo.img_src,
-          cameraName: photo.camera?.name
+          cameraName: photo.camera?.name,
+          cameraNameFull: photo.camera?.full_name
         )
       })
       self.date = Date()
       self.presenter?.photosDidFetch(photos: photos)
     } else {
       self.date = self.date.adding(.day, -1)
-      self.worker?.photosDidFetch(probe: self.probe, date: self.date)
+      self.worker?.photosDidFetch(sonda: self.sonda, date: self.date)
     }
   }
   

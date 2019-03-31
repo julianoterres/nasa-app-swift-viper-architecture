@@ -23,7 +23,7 @@ protocol PhotoListPresenterProtocolInput: class {
 protocol PhotoListInteractorProtocolOutput: class {
   var worker: PhotoListWorkerProtocolOutput? { get set }
   var presenter: PhotoListPresenterProtocolInput? { get set }
-  func photosDidFetch(probe: String)
+  func photosDidFetch(sonda: String)
 }
 
 protocol PhotoListInteractorProtocolInput: class {
@@ -35,7 +35,7 @@ protocol PhotoListWorkerProtocolOutput: class {
   var api: API? { get set }
   var network: NetworkProtocolInput? { get set }
   var interactor: PhotoListInteractorProtocolInput? { get set }
-  func photosDidFetch(probe: String, date: Date)
+  func photosDidFetch(sonda: String, date: Date)
 }
 
 protocol PhotoListRouterWireframe: class {
