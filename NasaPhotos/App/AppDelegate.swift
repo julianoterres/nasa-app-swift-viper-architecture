@@ -21,8 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func initMainScreen() {
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    let photoListRouter = PhotoListRouter()
-    photoListRouter.root()
+    if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let window = appDelegate.window  {
+      let viewControllerMain = PhotoListRouter().build()
+      let navigationController = UINavigationController()
+      navigationController.viewControllers = [viewControllerMain]
+      window.rootViewController = navigationController
+      window.makeKeyAndVisible()
+    }
   }
   
 }

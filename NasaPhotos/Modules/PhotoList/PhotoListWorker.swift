@@ -6,13 +6,8 @@ import Foundation
 class PhotoListWorker {
   
   weak var interactor: PhotoListInteractorProtocolInput?
-  private let network: NetworkProtocolInput
-  private let api = API()
-  
-  init(network: NetworkProtocolInput) {
-    self.network = network
-    self.network.delegate = self
-  }
+  var network: NetworkProtocolInput?
+  var api: API?
   
 }
 
@@ -22,9 +17,10 @@ extension PhotoListWorker: PhotoListWorkerProtocolOutput {
   
   func photosDidFetch(probe: String, date: Date) {
     let parametersMerge = ["earth_date": "2015-06-03"]
-    let url = self.api.urlRoversPhotos(probe: probe)
-    let parameters = self.api.mountParameters(parameters: parametersMerge)
-    self.network.request(url: url, method: .get, parameters: parameters)
+//    let parametersMerge = ["earth_date": date.convert_to_yyyy_mm_dd]
+    if let url = self.api?.urlRoversPhotos(probe: probe), let parameters = self.api?.mountParameters(parameters: parametersMerge) {
+      self.network?.request(url: url, method: .get, parameters: parameters)
+    }
   }
   
 }
@@ -35,7 +31,7 @@ extension PhotoListWorker: NetworkProtocolOutput {
   
   func success(response: Data) {
     do {
-      let listPhotos = try JSONDecoder().decode(PhotoListEntityApi.self, from: response)
+      let listPhotos = try JSONDecoder().decode(PhotoListApi.self, from: response)
       self.interactor?.photosDidFetch(photos: listPhotos.photos)
     } catch let error {
      self.interactor?.errorPhotosDidFetch(message: error.localizedDescription)

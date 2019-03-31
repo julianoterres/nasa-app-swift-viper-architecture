@@ -8,7 +8,7 @@ class PhotoListCell: UICollectionViewCell {
   
   private let img = UIImageView()
   
-  func setup(photo: PhotoEntityView) {
+  func setup(photo: PhotoView) {
     self.createElements()
     self.configElements(photo: photo)
     self.setContrainsInElemens()
@@ -18,7 +18,7 @@ class PhotoListCell: UICollectionViewCell {
     self.contentView.addSubview(self.img)
   }
   
-  private func configElements(photo: PhotoEntityView) {
+  private func configElements(photo: PhotoView) {
     self.contentView.clipsToBounds = true
     self.img.contentMode = .scaleAspectFill
     self.img.kf.indicatorType = .activity

@@ -5,12 +5,8 @@ import Foundation
 
 class PhotoListInteractor {
   
-  private let worker: PhotoListWorkerProtocolOutput
+  var worker: PhotoListWorkerProtocolOutput?
   weak var presenter: PhotoListPresenterProtocolInput?
-  
-  init(worker: PhotoListWorkerProtocolOutput) {
-    self.worker = worker
-  }
   
 }
 
@@ -19,7 +15,7 @@ class PhotoListInteractor {
 extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 
   func photosDidFetch(probe: String) {
-    self.worker.photosDidFetch(probe: probe, date: Date())
+    self.worker?.photosDidFetch(probe: probe, date: Date())
   }
   
 }
@@ -28,9 +24,9 @@ extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 
 extension PhotoListInteractor: PhotoListInteractorProtocolInput {
   
-  func photosDidFetch(photos: [PhotoEntityApi]) {
-    let photos = photos.map ({ (photo) -> PhotoEntityView in
-      return PhotoEntityView(
+  func photosDidFetch(photos: [PhotoApi]) {
+    let photos = photos.map ({ (photo) -> PhotoView in
+      return PhotoView(
         urlImage: photo.img_src,
         cameraName: photo.camera?.name
       )

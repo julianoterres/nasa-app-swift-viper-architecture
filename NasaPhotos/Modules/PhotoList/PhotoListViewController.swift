@@ -12,13 +12,12 @@ class PhotoListViewController: UIViewController {
   private let loader = UIActivityIndicatorView()
   
   // MARK: Variables of class
-  private let presenter: PhotoListPresenterProtocolOutput
-  private var photos = [PhotoEntityView]()
+  var presenter: PhotoListPresenterProtocolOutput?
+  private var photos = [PhotoView]()
   
   // MARK: Methods of init
   
-  init(presenter: PhotoListPresenterProtocolOutput) {
-    self.presenter = presenter
+  init() {
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -43,7 +42,6 @@ class PhotoListViewController: UIViewController {
     self.view.addSubview(self.loader)
     self.view.addSubview(self.segmentedControl)
     self.view.addSubview(self.collectionView)
-    
   }
   
   private func configElements() {
@@ -91,7 +89,7 @@ class PhotoListViewController: UIViewController {
   @objc func fetchPhotos() {
     if let title = self.segmentedControl.titleForSegment(at: self.segmentedControl.selectedSegmentIndex) {
       self.showLoader(status: true)
-      self.presenter.photosDidFetch(probe: title)
+      self.presenter?.photosDidFetch(probe: title)
     }
   }
   
@@ -108,17 +106,14 @@ class PhotoListViewController: UIViewController {
 
 extension PhotoListViewController: PhotoListViewControllerProtocol {
   
-  func reloadPhotos(photos: [PhotoEntityView]) {
+  func reloadPhotos(photos: [PhotoView]) {
     self.photos = photos
     self.collectionView.reloadData()
     self.showLoader(status: false)
   }
   
-  func errorFound(message: String) {
+  func errorFound() {
     self.showLoader(status: false)
-    let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    alertViewController.addAction(UIAlertAction(title: "OK", style: .default))
-    self.present(alertViewController, animated: true, completion: nil)
   }
   
 }
@@ -141,7 +136,7 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    self.presenter?.didSelectPhoto(photo: self.photos[indexPath.row])
   }
   
 }

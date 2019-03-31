@@ -7,11 +7,8 @@ class PhotoListPresenter {
   
   // MARK: Variables of class
   weak var viewController: PhotoListViewControllerProtocol?
-  private let interactor: PhotoListInteractorProtocolOutput
-  
-  init(interactor: PhotoListInteractorProtocolOutput) {
-    self.interactor = interactor
-  }
+  var router: PhotoListRouterWireframe?
+  var interactor: PhotoListInteractorProtocolOutput?
   
 }
 
@@ -20,7 +17,11 @@ class PhotoListPresenter {
 extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
   
   func photosDidFetch(probe: String) {
-    self.interactor.photosDidFetch(probe: probe)
+    self.interactor?.photosDidFetch(probe: probe)
+  }
+  
+  func didSelectPhoto(photo: PhotoView) {
+    self.router?.pushToPhotoDetails(photo: photo)
   }
   
 }
@@ -29,12 +30,13 @@ extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
 
 extension PhotoListPresenter: PhotoListPresenterProtocolInput {
   
-  func photosDidFetch(photos: [PhotoEntityView]) {
+  func photosDidFetch(photos: [PhotoView]) {
     self.viewController?.reloadPhotos(photos: photos)
   }
   
   func errorPhotosDidFetch(message: String) {
-    self.viewController?.errorFound(message: message)
+    self.viewController?.errorFound()
+    self.router?.showAlert(title: "Alert", message: message)
   }
   
 }
