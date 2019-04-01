@@ -18,12 +18,12 @@ class PhotoListInteractor {
   
 }
 
-// MARK: Methods of PhotoListInteractorProtocolInput
+// MARK: Methods of PhotoListInteractorProtocolOutput
 extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
-
-  func photosDidFetch(sonda: String) {
+  
+  func fetchPhotos(sonda: String) {
     self.sonda = sonda
-    self.worker?.photosDidFetch(sonda: self.sonda, date: self.date)
+    self.worker?.fetchPhotos(sonda: self.sonda, date: self.date)
   }
   
 }
@@ -31,25 +31,28 @@ extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 // MARK: Methods of PhotoListInteractorProtocolInput
 extension PhotoListInteractor: PhotoListInteractorProtocolInput {
   
-  func photosDidFetch(photos: [PhotoApi]) {
-    if photos.count > 0 {
-      let photos = photos.map ({ (photo) -> PhotoView in
-        return PhotoView(
-          urlImage: photo.img_src,
-          cameraName: photo.camera?.name,
-          cameraNameFull: photo.camera?.full_name
-        )
-      })
-      self.date = Date()
-      self.presenter?.photosDidFetch(photos: photos)
-    } else {
+  func didFetchPhotos(photos: [PhotoApi]) {
+    
+    if photos.isEmpty {
       self.date = self.date.adding(.day, -1)
-      self.worker?.photosDidFetch(sonda: self.sonda, date: self.date)
+      self.worker?.fetchPhotos(sonda: self.sonda, date: self.date)
+      return
     }
+     
+    let photos = photos.map ({ (photo) -> PhotoView in
+      return PhotoView(
+        urlImage: photo.img_src,
+        cameraName: photo.camera?.name,
+        cameraNameFull: photo.camera?.full_name
+      )
+    })
+    self.date = Date()
+    self.presenter?.didFetchPhotos(photos: photos)
+    
   }
   
-  func errorPhotosDidFetch(message: String) {
-    self.presenter?.errorPhotosDidFetch(message: message)
+  func errorDidFetchPhotos(message: String) {
+    self.presenter?.errorDidFetchPhotos(message: message)
   }
   
 }

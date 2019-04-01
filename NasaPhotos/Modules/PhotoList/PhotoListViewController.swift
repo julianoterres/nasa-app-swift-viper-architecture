@@ -136,7 +136,7 @@ extension PhotoListViewController: PhotoListViewControllerProtocol {
   @objc func fetchPhotos() {
     self.viewRetry.isHidden = true
     self.collectionView.isHidden = true
-    self.presenter?.photosDidFetch(segmentIndex: self.segmentedControl.selectedSegmentIndex)
+    self.presenter?.fetchPhotos(segmentIndex: self.segmentedControl.selectedSegmentIndex)
   }
   
   func reloadPhotos(photos: [PhotoView]) {

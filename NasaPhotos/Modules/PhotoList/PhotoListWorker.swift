@@ -17,13 +17,15 @@ class PhotoListWorker {
   
 }
 
-// MARK: Methods of PhotoListWorkerProtocolInput
+// MARK: Methods of PhotoListWorkerProtocolOutput
 extension PhotoListWorker: PhotoListWorkerProtocolOutput {
   
-  func photosDidFetch(sonda: String, date: Date) {
+  func fetchPhotos(sonda: String, date: Date) {
     let parametersMerge = ["earth_date": date.convert_to_yyyy_mm_dd]
     if let url = self.api?.urlRoversPhotos(sonda: sonda), let parameters = self.api?.mountParameters(parameters: parametersMerge) {
       self.network?.request(url: url, method: .get, parameters: parameters)
+    } else {
+      self.interactor?.errorDidFetchPhotos(message: "Error load api")
     }
   }
   
@@ -35,14 +37,14 @@ extension PhotoListWorker: NetworkProtocolOutput {
   func success(response: Data) {
     do {
       let listPhotos = try JSONDecoder().decode(PhotoListApi.self, from: response)
-      self.interactor?.photosDidFetch(photos: listPhotos.photos)
+      self.interactor?.didFetchPhotos(photos: listPhotos.photos)
     } catch let error {
-     self.interactor?.errorPhotosDidFetch(message: error.localizedDescription)
+     self.interactor?.errorDidFetchPhotos(message: error.localizedDescription)
     }
   }
   
   func failure(error: Error) {
-    self.interactor?.errorPhotosDidFetch(message: error.localizedDescription)
+    self.interactor?.errorDidFetchPhotos(message: error.localizedDescription)
   }
   
 }

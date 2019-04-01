@@ -22,31 +22,31 @@ protocol PhotoListPresenterProtocolOutput: class {
   var router: PhotoListRouterWireframe? { get set }
   var interactor: PhotoListInteractorProtocolOutput? { get set }
   var viewController: PhotoListViewControllerProtocol? { get set }
-  func photosDidFetch(segmentIndex: Int)
+  func fetchPhotos(segmentIndex: Int)
   func didSelectPhoto(photo: PhotoView)
 }
 
 protocol PhotoListPresenterProtocolInput: class {
-  func photosDidFetch(photos: [PhotoView])
-  func errorPhotosDidFetch(message: String)
+  func didFetchPhotos(photos: [PhotoView])
+  func errorDidFetchPhotos(message: String)
 }
 
 protocol PhotoListInteractorProtocolOutput: class {
   var worker: PhotoListWorkerProtocolOutput? { get set }
   var presenter: PhotoListPresenterProtocolInput? { get set }
-  func photosDidFetch(sonda: String)
+  func fetchPhotos(sonda: String)
 }
 
 protocol PhotoListInteractorProtocolInput: class {
-  func photosDidFetch(photos: [PhotoApi])
-  func errorPhotosDidFetch(message: String)
+  func didFetchPhotos(photos: [PhotoApi])
+  func errorDidFetchPhotos(message: String)
 }
 
 protocol PhotoListWorkerProtocolOutput: class {
   var api: API? { get set }
   var network: NetworkProtocolInput? { get set }
   var interactor: PhotoListInteractorProtocolInput? { get set }
-  func photosDidFetch(sonda: String, date: Date)
+  func fetchPhotos(sonda: String, date: Date)
 }
 
 protocol PhotoListRouterWireframe: class {

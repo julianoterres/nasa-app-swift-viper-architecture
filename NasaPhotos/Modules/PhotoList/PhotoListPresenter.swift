@@ -22,8 +22,8 @@ class PhotoListPresenter {
 // MARK: Methods of PhotoListPresenterProtocolOutput
 extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
   
-  func photosDidFetch(segmentIndex: Int) {
-    self.interactor?.photosDidFetch(sonda: sondas[segmentIndex])
+  func fetchPhotos(segmentIndex: Int) {
+    self.interactor?.fetchPhotos(sonda: sondas[segmentIndex])
   }
   
   func didSelectPhoto(photo: PhotoView) {
@@ -35,11 +35,11 @@ extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
 // MARK: Methods of PhotoListPresenterProtocolInput
 extension PhotoListPresenter: PhotoListPresenterProtocolInput {
   
-  func photosDidFetch(photos: [PhotoView]) {
+  func didFetchPhotos(photos: [PhotoView]) {
     self.viewController?.reloadPhotos(photos: photos)
   }
   
-  func errorPhotosDidFetch(message: String) {
+  func errorDidFetchPhotos(message: String) {
     self.viewController?.errorFound()
   }
   
