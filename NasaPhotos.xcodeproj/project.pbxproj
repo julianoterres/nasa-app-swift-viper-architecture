@@ -25,6 +25,8 @@
 		3A9A02DF2251B8AE00F6BA95 /* PhotoDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02DE2251B8AE00F6BA95 /* PhotoDetailInteractor.swift */; };
 		3A9A02E12251B8CE00F6BA95 /* PhotoDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02E02251B8CE00F6BA95 /* PhotoDetailPresenter.swift */; };
 		3A9A02E32251B8E700F6BA95 /* PhotoDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02E22251B8E700F6BA95 /* PhotoDetailWorker.swift */; };
+		3A9A02E72251BE2700F6BA95 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02E62251BE2700F6BA95 /* APITests.swift */; };
+		3A9A02EA2251BF4400F6BA95 /* DateExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02E92251BF4400F6BA95 /* DateExtensionTests.swift */; };
 		3AE6118022500009002776AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6117F22500009002776AB /* API.swift */; };
 		3AE6118222500286002776AB /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6118122500286002776AB /* DictionaryExtension.swift */; };
 		3AE61184225006FF002776AB /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE61183225006FF002776AB /* PhotoView.swift */; };
@@ -88,6 +90,8 @@
 		3A9A02DE2251B8AE00F6BA95 /* PhotoDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailInteractor.swift; sourceTree = "<group>"; };
 		3A9A02E02251B8CE00F6BA95 /* PhotoDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailPresenter.swift; sourceTree = "<group>"; };
 		3A9A02E22251B8E700F6BA95 /* PhotoDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailWorker.swift; sourceTree = "<group>"; };
+		3A9A02E62251BE2700F6BA95 /* APITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
+		3A9A02E92251BF4400F6BA95 /* DateExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionTests.swift; sourceTree = "<group>"; };
 		3AE6117F22500009002776AB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3AE6118122500286002776AB /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		3AE61183225006FF002776AB /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
@@ -233,6 +237,31 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		3A9A02E42251BE0C00F6BA95 /* Commoms */ = {
+			isa = PBXGroup;
+			children = (
+				3A9A02E82251BF3300F6BA95 /* Extensions */,
+				3A9A02E52251BE1500F6BA95 /* Libraries */,
+			);
+			path = Commoms;
+			sourceTree = "<group>";
+		};
+		3A9A02E52251BE1500F6BA95 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3A9A02E62251BE2700F6BA95 /* APITests.swift */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		3A9A02E82251BF3300F6BA95 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3A9A02E92251BF4400F6BA95 /* DateExtensionTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		3AE6118722503E18002776AB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +311,7 @@
 		3AFAF1AE224C16AF005CF41C /* NasaPhotosTests */ = {
 			isa = PBXGroup;
 			children = (
+				3A9A02E42251BE0C00F6BA95 /* Commoms */,
 				3A0D1EC4225163590004B161 /* Modules */,
 				3AFAF1B1224C16AF005CF41C /* Info.plist */,
 			);
@@ -651,6 +681,8 @@
 			files = (
 				3A9A02D522519E9600F6BA95 /* PhotoListRouterTests.swift in Sources */,
 				3A9A02DD2251B55B00F6BA95 /* PhotoListWorkerTests.swift in Sources */,
+				3A9A02EA2251BF4400F6BA95 /* DateExtensionTests.swift in Sources */,
+				3A9A02E72251BE2700F6BA95 /* APITests.swift in Sources */,
 				3A9A02D122519B8D00F6BA95 /* PhotoListApiTests.swift in Sources */,
 				3A9A02D92251B08D00F6BA95 /* PhotoListPresenterTests.swift in Sources */,
 				3A9A02CF22519B1C00F6BA95 /* PhotoCameraApiTests.swift in Sources */,
