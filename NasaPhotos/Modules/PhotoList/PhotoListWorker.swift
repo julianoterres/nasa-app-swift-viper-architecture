@@ -13,7 +13,7 @@ class PhotoListWorker {
   
   weak var interactor: PhotoListInteractorProtocolInput?
   var network: NetworkProtocolInput?
-  var api: API?
+  var api: APIProtocol?
   
 }
 

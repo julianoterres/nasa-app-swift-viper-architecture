@@ -14,7 +14,7 @@ class PhotoListWorkerMock {
   
   weak var interactor: PhotoListInteractorProtocolInput?
   var network: NetworkProtocolInput?
-  var api: API?
+  var api: APIProtocol?
   var functionCalled = false
   
 }

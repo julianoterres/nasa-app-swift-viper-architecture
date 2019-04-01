@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 
 protocol PhotoListViewControllerProtocol: class {
-  func createElements()
-  func configElements()
-  func setContrainsInElemens()
   func fetchPhotos()
   func reloadPhotos(photos: [PhotoView])
   func errorFound()
@@ -43,7 +40,7 @@ protocol PhotoListInteractorProtocolInput: class {
 }
 
 protocol PhotoListWorkerProtocolOutput: class {
-  var api: API? { get set }
+  var api: APIProtocol? { get set }
   var network: NetworkProtocolInput? { get set }
   var interactor: PhotoListInteractorProtocolInput? { get set }
   func fetchPhotos(sonda: String, date: Date)

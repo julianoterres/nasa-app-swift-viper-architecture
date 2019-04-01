@@ -13,7 +13,7 @@ import Nimble
 // MARK: Methods of PhotoDetailRouterTests
 class PhotoDetailRouterTests: QuickSpec {
   
-  var router: PhotoDetailRouterSpy!
+  var router: PhotoDetailRouter!
   var photo: PhotoView!
   
   override func spec() {
@@ -26,33 +26,20 @@ class PhotoDetailRouterTests: QuickSpec {
           cameraName: "Nome Camera",
           cameraNameFull: "Nome Camera Full Name"
         )
-        self.router = PhotoDetailRouterSpy()
+        self.router = PhotoDetailRouter()
       }
       
-      context("and call method build", {
+      context("and call method", {
         
-        it("check if is called", closure: {
-          let _ = self.router.build(photo: self.photo)
-          expect(self.router.functionCalled) == true
+        it("build, should return a UIViewController", closure: {
+          let viewController = self.router.build(photo: self.photo)
+          expect(viewController).to(beAKindOf(UIViewController.self))
         })
         
       })
       
     }
     
-  }
-  
-}
-
-// MARK: Methods of PhotoDetailRouterSpy
-final class PhotoDetailRouterSpy: PhotoDetailRouterWireframe {
-  
-  var functionCalled = false
-  var viewController: UIViewController?
-  
-  func build(photo: PhotoView) -> UIViewController {
-    self.functionCalled = true
-    return PhotoDetailViewController()
   }
   
 }

@@ -13,82 +13,53 @@ import Nimble
 // MARK: Methods of PhotoListInteractorTests
 class PhotoListPresenterTests: QuickSpec {
   
+  var presenter: PhotoListPresenter?
+  var viewController: PhotoListViewControllerMock?
+  var router: PhotoListRouterMock?
+  var interactor: PhotoListInteractorMock?
+  
+  
   override func spec() {
     
-    describe("When instance interactor") {
+    beforeEach {
+      self.viewController = PhotoListViewControllerMock()
+      self.router = PhotoListRouterMock()
+      self.interactor = PhotoListInteractorMock()
+      self.presenter = PhotoListPresenter()
+      self.presenter?.viewController = self.viewController
+      self.presenter?.router = self.router
+      self.presenter?.interactor = self.interactor
+    }
+    
+    describe("When instance presenter") {
       
-      context("and call methods input", {
+      context("and call method", {
         
-        it("didFetchPhotos, check if is called", closure: {
-          let presenter = PhotoListPresenterInputSpy()
-          presenter.didFetchPhotos(photos: [])
-          expect(presenter.functionCalled) == true
+        it("fetchPhotos, should call the fetchPhotos of interactor", closure: {
+          self.presenter?.fetchPhotos(segmentIndex: 0)
+          expect(self.interactor?.functionCalled) == true
         })
         
-        it("errorDidFetchPhotos, check if is called", closure: {
-          let presenter = PhotoListPresenterInputSpy()
-          presenter.errorDidFetchPhotos(message: "")
-          expect(presenter.functionCalled) == true
+        it("didSelectPhoto, should call the pushToPhotoDetails of router", closure: {
+          let photo = PhotoView (urlImage: "http://google.com", cameraName: "Name", cameraNameFull: "Full Name")
+          self.presenter?.didSelectPhoto(photo: photo)
+          expect(self.router?.functionCalled) == true
         })
         
-      })
-      
-      context("and call methods output", {
-        
-        it("fetchPhotos, check if is called", closure: {
-          let presenter = PhotoListPresenterOutputSpy()
-          presenter.fetchPhotos(segmentIndex: 0)
-          expect(presenter.functionCalled) == true
+        it("didFetchPhotos, should call the reloadPhotos of viewController", closure: {
+          self.presenter?.didFetchPhotos(photos: [])
+          expect(self.viewController?.functionCalled) == true
         })
         
-        it("didSelectPhoto, check if is called", closure: {
-          let presenter = PhotoListPresenterOutputSpy()
-          let photoView = PhotoView(
-            urlImage: "http://google.com",
-            cameraName: "Nome Camera",
-            cameraNameFull: "Nome Camera Full Name"
-          )
-          presenter.didSelectPhoto(photo: photoView)
-          expect(presenter.functionCalled) == true
+        it("errorDidFetchPhotos, should call the errorFound of viewController", closure: {
+          self.presenter?.errorDidFetchPhotos(message: "")
+          expect(self.viewController?.functionCalled) == true
         })
         
       })
       
     }
     
-  }
-  
-}
-
-// MARK: Methods of PhotoListPresenterInputSpy
-final class PhotoListPresenterInputSpy: PhotoListPresenterProtocolInput {
-  
-  var functionCalled = false
-  
-  func didFetchPhotos(photos: [PhotoView]) {
-    self.functionCalled = true
-  }
-  
-  func errorDidFetchPhotos(message: String) {
-    self.functionCalled = true
-  }
-  
-}
-
-// MARK: Methods of PhotoListPresenterOutputSpy
-final class PhotoListPresenterOutputSpy: PhotoListPresenterProtocolOutput {
-  
-  var functionCalled = false
-  var router: PhotoListRouterWireframe?
-  var interactor: PhotoListInteractorProtocolOutput?
-  var viewController: PhotoListViewControllerProtocol?
-  
-  func fetchPhotos(segmentIndex: Int) {
-    self.functionCalled = true
-  }
-  
-  func didSelectPhoto(photo: PhotoView) {
-    self.functionCalled = true
   }
   
 }

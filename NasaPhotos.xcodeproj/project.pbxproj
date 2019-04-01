@@ -14,6 +14,11 @@
 		3A314CAA224FDBEC003D3FBB /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A314CA9224FDBEC003D3FBB /* EnumDefinition.swift */; };
 		3A7D5C00225286480020663F /* PhotoListWorkerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5BFF225286480020663F /* PhotoListWorkerMock.swift */; };
 		3A7D5C02225287540020663F /* PhotoListPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5C01225287540020663F /* PhotoListPresenterMock.swift */; };
+		3A7D5C0422529F5F0020663F /* PhotoListViewControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5C0322529F5F0020663F /* PhotoListViewControllerMock.swift */; };
+		3A7D5C062252A0870020663F /* PhotoListRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5C052252A0870020663F /* PhotoListRouterMock.swift */; };
+		3A7D5C082252A12F0020663F /* PhotoListInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5C072252A12F0020663F /* PhotoListInteractorMock.swift */; };
+		3A7D5C0C2252ACF90020663F /* NetworkMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5C0B2252ACF90020663F /* NetworkMock.swift */; };
+		3A7D5C0E2252AE010020663F /* APIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D5C0D2252AE010020663F /* APIMock.swift */; };
 		3A9A02C92251730700F6BA95 /* PhotoDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02C82251730700F6BA95 /* PhotoDetailViewControllerTests.swift */; };
 		3A9A02CD22518DF700F6BA95 /* PhotoApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02CC22518DF700F6BA95 /* PhotoApiTests.swift */; };
 		3A9A02CF22519B1C00F6BA95 /* PhotoCameraApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02CE22519B1C00F6BA95 /* PhotoCameraApiTests.swift */; };
@@ -81,6 +86,11 @@
 		3A314CA9224FDBEC003D3FBB /* EnumDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefinition.swift; sourceTree = "<group>"; };
 		3A7D5BFF225286480020663F /* PhotoListWorkerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListWorkerMock.swift; sourceTree = "<group>"; };
 		3A7D5C01225287540020663F /* PhotoListPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListPresenterMock.swift; sourceTree = "<group>"; };
+		3A7D5C0322529F5F0020663F /* PhotoListViewControllerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewControllerMock.swift; sourceTree = "<group>"; };
+		3A7D5C052252A0870020663F /* PhotoListRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListRouterMock.swift; sourceTree = "<group>"; };
+		3A7D5C072252A12F0020663F /* PhotoListInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListInteractorMock.swift; sourceTree = "<group>"; };
+		3A7D5C0B2252ACF90020663F /* NetworkMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMock.swift; sourceTree = "<group>"; };
+		3A7D5C0D2252AE010020663F /* APIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMock.swift; sourceTree = "<group>"; };
 		3A9A02C82251730700F6BA95 /* PhotoDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		3A9A02CC22518DF700F6BA95 /* PhotoApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoApiTests.swift; sourceTree = "<group>"; };
 		3A9A02CE22519B1C00F6BA95 /* PhotoCameraApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCameraApiTests.swift; sourceTree = "<group>"; };
@@ -220,6 +230,7 @@
 		3A7D5BFC225285F10020663F /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				3A7D5C092252ACE40020663F /* Commoms */,
 				3A7D5BFD225286290020663F /* Modules */,
 			);
 			path = Mocks;
@@ -236,10 +247,38 @@
 		3A7D5BFE225286340020663F /* PhotoList */ = {
 			isa = PBXGroup;
 			children = (
+				3A7D5C072252A12F0020663F /* PhotoListInteractorMock.swift */,
 				3A7D5C01225287540020663F /* PhotoListPresenterMock.swift */,
+				3A7D5C052252A0870020663F /* PhotoListRouterMock.swift */,
+				3A7D5C0322529F5F0020663F /* PhotoListViewControllerMock.swift */,
 				3A7D5BFF225286480020663F /* PhotoListWorkerMock.swift */,
 			);
 			path = PhotoList;
+			sourceTree = "<group>";
+		};
+		3A7D5C092252ACE40020663F /* Commoms */ = {
+			isa = PBXGroup;
+			children = (
+				3A7D5C0A2252ACEB0020663F /* Libraries */,
+			);
+			path = Commoms;
+			sourceTree = "<group>";
+		};
+		3A7D5C0A2252ACEB0020663F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				3A7D5C0D2252AE010020663F /* APIMock.swift */,
+				3A7D5C0B2252ACF90020663F /* NetworkMock.swift */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		3A7D5C0F2252C21D0020663F /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3AFAF1B1224C16AF005CF41C /* Info.plist */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 		3A9A02CA22518D9C00F6BA95 /* PhotoList */ = {
@@ -340,10 +379,10 @@
 		3AFAF1AE224C16AF005CF41C /* NasaPhotosTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A7D5BFC225285F10020663F /* Mocks */,
 				3A9A02E42251BE0C00F6BA95 /* Commoms */,
+				3A7D5BFC225285F10020663F /* Mocks */,
 				3A0D1EC4225163590004B161 /* Modules */,
-				3AFAF1B1224C16AF005CF41C /* Info.plist */,
+				3A7D5C0F2252C21D0020663F /* SupportFiles */,
 			);
 			path = NasaPhotosTests;
 			sourceTree = "<group>";
@@ -440,8 +479,8 @@
 		3AFAF1E1224D01B5005CF41C /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				3AFAF1E2224D01EA005CF41C /* Network.swift */,
 				3AE6117F22500009002776AB /* API.swift */,
+				3AFAF1E2224D01EA005CF41C /* Network.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -709,8 +748,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7D5C0C2252ACF90020663F /* NetworkMock.swift in Sources */,
 				3A9A02D522519E9600F6BA95 /* PhotoListRouterTests.swift in Sources */,
+				3A7D5C0422529F5F0020663F /* PhotoListViewControllerMock.swift in Sources */,
 				3A9A02DD2251B55B00F6BA95 /* PhotoListWorkerTests.swift in Sources */,
+				3A7D5C0E2252AE010020663F /* APIMock.swift in Sources */,
 				3A9A02EA2251BF4400F6BA95 /* DateExtensionTests.swift in Sources */,
 				3A9A02E72251BE2700F6BA95 /* APITests.swift in Sources */,
 				3A9A02D122519B8D00F6BA95 /* PhotoListApiTests.swift in Sources */,
@@ -718,10 +760,12 @@
 				3A9A02CF22519B1C00F6BA95 /* PhotoCameraApiTests.swift in Sources */,
 				3A7D5C02225287540020663F /* PhotoListPresenterMock.swift in Sources */,
 				3A9A02C92251730700F6BA95 /* PhotoDetailViewControllerTests.swift in Sources */,
+				3A7D5C062252A0870020663F /* PhotoListRouterMock.swift in Sources */,
 				3A9A02D322519DAF00F6BA95 /* PhotoViewTests.swift in Sources */,
 				3A9A02D72251AE5B00F6BA95 /* PhotoListInteractorTests.swift in Sources */,
 				3A7D5C00225286480020663F /* PhotoListWorkerMock.swift in Sources */,
 				3A0D1EC8225164020004B161 /* PhotoDetailRouterTests.swift in Sources */,
+				3A7D5C082252A12F0020663F /* PhotoListInteractorMock.swift in Sources */,
 				3A9A02CD22518DF700F6BA95 /* PhotoApiTests.swift in Sources */,
 				3A9A02DB2251B38700F6BA95 /* PhotoListViewControllerTests.swift in Sources */,
 			);
@@ -925,7 +969,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
-				INFOPLIST_FILE = NasaPhotosTests/Info.plist;
+				INFOPLIST_FILE = NasaPhotosTests/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -950,7 +994,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
-				INFOPLIST_FILE = NasaPhotosTests/Info.plist;
+				INFOPLIST_FILE = NasaPhotosTests/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

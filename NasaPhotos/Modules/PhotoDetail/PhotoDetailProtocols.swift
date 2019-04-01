@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 protocol PhotoDetailViewControllerProtocol: class {
-  var photo: PhotoView? { get set }
-  func createElements()
-  func configElements()
-  func setContrainsInElemens()
   func changeCameraName()
 }
 

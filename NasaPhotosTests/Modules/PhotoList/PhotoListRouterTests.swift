@@ -13,7 +13,8 @@ import Nimble
 // MARK: Methods of PhotoListRouterTests
 class PhotoListRouterTests: QuickSpec {
   
-  var router: PhotoListRouterSpy!
+  var router: PhotoListRouter!
+  var viewController: PhotoListViewControllerMock!
   var photo: PhotoView!
   
   override func spec() {
@@ -21,24 +22,17 @@ class PhotoListRouterTests: QuickSpec {
     describe("When instance router") {
       
       beforeEach {
-        self.photo = PhotoView(
-          urlImage: "http://google.com",
-          cameraName: "Nome Camera",
-          cameraNameFull: "Nome Camera Full Name"
-        )
-        self.router = PhotoListRouterSpy()
+        self.photo = PhotoView(urlImage: "http://google.com", cameraName: "Nome Camera", cameraNameFull: "Nome Camera Full Name")
+        self.viewController = PhotoListViewControllerMock()
+        self.router = PhotoListRouter()
+        self.router.viewController = self.viewController
       }
       
       context("and call method", {
         
-        it("build, check if is called", closure: {
-          let _ = self.router.build()
-          expect(self.router.functionCalled) == true
-        })
-        
-        it("pushToPhotoDetails, check if is called", closure: {
-          let _ = self.router.pushToPhotoDetails(photo: self.photo)
-          expect(self.router.functionCalled) == true
+        it("build, should return a viewController", closure: {
+          let viewController = self.router.build()
+          expect(viewController).to(beAKindOf(UIViewController.self))
         })
         
       })
@@ -48,22 +42,3 @@ class PhotoListRouterTests: QuickSpec {
   }
   
 }
-
-// MARK: Methods of PhotoListRouterSpy
-final class PhotoListRouterSpy: PhotoListRouterWireframe {
-  
-  var functionCalled = false
-  var viewController: UIViewController?
-  
-  func build() -> UIViewController {
-    self.functionCalled = true
-    return PhotoListViewController()
-  }
-  
-  func pushToPhotoDetails(photo: PhotoView) {
-    self.functionCalled = true
-  }
-  
-}
-
-

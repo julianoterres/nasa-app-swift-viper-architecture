@@ -8,8 +8,14 @@
 
 import Foundation
 
+// MARK: Methods of APIProtocol
+protocol APIProtocol: class {
+  func urlRoversPhotos(sonda: String) -> URL
+  func mountParameters(parameters: [String:Any]) -> [String:Any]
+}
+
 // MARK: Methods of API
-final class API {
+class API: APIProtocol {
   
   private let baseUlr = "https://api.nasa.gov/mars-photos/api/v1/"
   

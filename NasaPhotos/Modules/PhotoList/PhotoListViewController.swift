@@ -9,7 +9,6 @@
 import UIKit
 
 // MARK: Methods of PhotoListViewController
-
 class PhotoListViewController: UIViewController {
   
   // MARK: Elements of class
@@ -25,7 +24,7 @@ class PhotoListViewController: UIViewController {
   
   // MARK: Variables of class
   var presenter: PhotoListPresenterProtocolOutput?
-  private var photos = [PhotoView]()
+  var photos = [PhotoView]()
   
   // MARK: Methods of life cicle
   override func viewDidLoad() {
@@ -35,11 +34,6 @@ class PhotoListViewController: UIViewController {
     self.setContrainsInElemens()
     self.fetchPhotos()
   }
-  
-}
-
-// MARK: Methods of PhotoListViewControllerProtocol
-extension PhotoListViewController: PhotoListViewControllerProtocol {
   
   // MARK: Methods of class
   func createElements() {
@@ -133,6 +127,11 @@ extension PhotoListViewController: PhotoListViewControllerProtocol {
       ])
   }
   
+}
+
+// MARK: Methods of PhotoListViewControllerProtocol
+extension PhotoListViewController: PhotoListViewControllerProtocol {
+  
   @objc func fetchPhotos() {
     self.viewRetry.isHidden = true
     self.collectionView.isHidden = true
@@ -184,4 +183,3 @@ extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
   }
   
 }
-

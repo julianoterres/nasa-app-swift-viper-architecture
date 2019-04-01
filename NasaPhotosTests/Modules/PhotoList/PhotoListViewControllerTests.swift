@@ -13,83 +13,40 @@ import Nimble
 // MARK: Methods of PhotoListViewControllerTests
 class PhotoListViewControllerTests: QuickSpec {
   
-  var viewController: PhotoListViewControllerSpy!
+  var viewController: PhotoListViewController!
+  var presenter: PhotoListPresenterMock!
   
   override func spec() {
     
     describe("When instance viewController") {
       
       beforeEach {
-        self.viewController = PhotoListViewControllerSpy()
+        self.viewController = PhotoListViewController()
+        self.presenter = PhotoListPresenterMock()
+        self.viewController.presenter = self.presenter
+        self.viewController.viewDidLoad()
       }
       
-      context("and call method input", {
+      context("and call method", {
         
-        it("createElements, check if is called", closure: {
-          self.viewController.createElements()
-          expect(self.viewController.functionCalled) == true
+        it("fetchPhotos, should call the fetchPhotos of presenter", closure: {
+          self.viewController?.fetchPhotos()
+          expect(self.presenter?.functionCalled) == true
         })
         
-        it("configElements, check if is called", closure: {
-          self.viewController.configElements()
-          expect(self.viewController.functionCalled) == true
-        })
-        
-        it("setContrainsInElemens, check if is called", closure: {
-          self.viewController.setContrainsInElemens()
-          expect(self.viewController.functionCalled) == true
-        })
-        
-        it("fetchPhotos, check if is called", closure: {
-          self.viewController.fetchPhotos()
-          expect(self.viewController.functionCalled) == true
-        })
-        
-        it("reloadPhotos, check if is called", closure: {
-          self.viewController.reloadPhotos(photos: [])
-          expect(self.viewController.functionCalled) == true
-        })
-        
-        it("errorFound, check if is called", closure: {
-          self.viewController.errorFound()
-          expect(self.viewController.functionCalled) == true
+        it("reloadPhotos, should call the fetchPhotos of presenter", closure: {
+          let photos = [PhotoView(urlImage: "http://google.com", cameraName: "Nome Camera", cameraNameFull: "Nome Camera Full Name")]
+          self.viewController?.reloadPhotos(photos: photos)
+          expect(self.viewController.photos.count) == 1
+          expect(self.viewController.photos[0].urlImage) == "http://google.com"
+          expect(self.viewController.photos[0].cameraName) == "Nome Camera"
+          expect(self.viewController.photos[0].cameraNameFull) == "Nome Camera Full Name"
         })
         
       })
       
     }
     
-  }
-  
-}
-
-// MARK: Methods of PhotoListPresenterInputSpy
-final class PhotoListViewControllerSpy: PhotoListViewControllerProtocol {
-  
-  var functionCalled = false
-  
-  func createElements() {
-    self.functionCalled = true
-  }
-  
-  func configElements() {
-    self.functionCalled = true
-  }
-  
-  func setContrainsInElemens() {
-    self.functionCalled = true
-  }
-  
-  func fetchPhotos() {
-    self.functionCalled = true
-  }
-  
-  func reloadPhotos(photos: [PhotoView]) {
-    self.functionCalled = true
-  }
-  
-  func errorFound() {
-    self.functionCalled = true
   }
   
 }

@@ -13,41 +13,36 @@ import Nimble
 // MARK: Methods of PhotoListViewControllerTests
 class PhotoListWorkerTests: QuickSpec {
   
-  var worker: PhotoListWorkerOutputSpy!
+  var worker: PhotoListWorker!
+  var interactor: PhotoListInteractorMock?
+  var network: NetworkInputMock?
+  var api: APIMock?
   
   override func spec() {
     
     describe("When instance worker") {
       
       beforeEach {
-        self.worker = PhotoListWorkerOutputSpy()
+        self.interactor = PhotoListInteractorMock()
+        self.network = NetworkInputMock()
+        self.api = APIMock()
+        self.worker = PhotoListWorker()
+        self.worker.interactor = self.interactor
+        self.worker.network = self.network
+        self.worker.api = self.api
       }
       
-      context("and call method input", {
+      context("and call method", {
         
-        it("fetchPhotos, check if is called", closure: {
+        it("fetchPhotos, should call the request of network", closure: {
           self.worker.fetchPhotos(sonda: "", date: Date())
-          expect(self.worker.functionCalled) == true
+          expect(self.network?.functionCalled) == true
         })
         
       })
       
     }
     
-  }
-  
-}
-
-// MARK: Methods of PhotoListWorkerSpy
-final class PhotoListWorkerOutputSpy: PhotoListWorkerProtocolOutput {
-  
-  var api: API?
-  var network: NetworkProtocolInput?
-  var interactor: PhotoListInteractorProtocolInput?
-  var functionCalled = false
-  
-  func fetchPhotos(sonda: String, date: Date) {
-    self.functionCalled = true
   }
   
 }

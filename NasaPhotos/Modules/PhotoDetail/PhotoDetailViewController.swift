@@ -27,11 +27,6 @@ class PhotoDetailViewController: UIViewController {
     self.configElements()
     self.setContrainsInElemens()
   }
-
-}
-
-// MARK: Methods of PhotoDetailViewControllerProtocol
-extension PhotoDetailViewController: PhotoDetailViewControllerProtocol {
   
   // MARK: Methods of class
   func createElements() {
@@ -61,15 +56,20 @@ extension PhotoDetailViewController: PhotoDetailViewControllerProtocol {
       self.label.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
       self.label.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15),
       self.label.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15)
-    ])
+      ])
     self.img.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.img.topAnchor.constraint(equalTo: self.label.bottomAnchor, constant: 15),
       self.img.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
       self.img.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
       self.img.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
-    ])
+      ])
   }
+
+}
+
+// MARK: Methods of PhotoDetailViewControllerProtocol
+extension PhotoDetailViewController: PhotoDetailViewControllerProtocol {
   
   @objc func changeCameraName() {
     self.label.isUserInteractionEnabled = false
