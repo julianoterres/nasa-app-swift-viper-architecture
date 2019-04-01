@@ -9,7 +9,6 @@
 import Foundation
 
 // MARK: Methods of PhotoListWorker
-
 class PhotoListWorker {
   
   weak var interactor: PhotoListInteractorProtocolInput?

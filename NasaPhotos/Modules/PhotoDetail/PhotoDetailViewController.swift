@@ -18,6 +18,7 @@ class PhotoDetailViewController: UIViewController {
   
   // MARK: Variables of class
   var photo: PhotoView?
+  var presenter: PhotoDetailPresenterProtocolOutput?
   
   // MARK: Methods of life cicle
   override func viewDidLoad() {

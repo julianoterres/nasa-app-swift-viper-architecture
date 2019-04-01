@@ -17,6 +17,30 @@ protocol PhotoDetailViewControllerProtocol: class {
   func changeCameraName()
 }
 
+protocol PhotoDetailPresenterProtocolOutput: class {
+  
+}
+
+protocol PhotoDetailPresenterProtocolInput: class {
+  
+}
+
+protocol PhotoDetailInteractorProtocolOutput: class {
+  
+}
+
+protocol PhotoDetailInteractorProtocolInput: class {
+  
+}
+
+protocol PhotoDetailWorkerProtocolOutput: class {
+  
+}
+
+protocol PhotoDetailWorkerProtocolInput: class {
+  
+}
+
 protocol PhotoDetailRouterWireframe: class {
   var viewController: UIViewController? { get set }
   func build(photo: PhotoView) -> UIViewController
