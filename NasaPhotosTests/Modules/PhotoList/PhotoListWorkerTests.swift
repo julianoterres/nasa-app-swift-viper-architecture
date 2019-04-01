@@ -25,8 +25,8 @@ class PhotoListWorkerTests: QuickSpec {
       
       context("and call method input", {
         
-        it("photosDidFetch, check if is called", closure: {
-          self.worker.photosDidFetch(sonda: "", date: Date())
+        it("fetchPhotos, check if is called", closure: {
+          self.worker.fetchPhotos(sonda: "", date: Date())
           expect(self.worker.functionCalled) == true
         })
         
@@ -46,7 +46,7 @@ final class PhotoListWorkerOutputSpy: PhotoListWorkerProtocolOutput {
   var interactor: PhotoListInteractorProtocolInput?
   var functionCalled = false
   
-  func photosDidFetch(sonda: String, date: Date) {
+  func fetchPhotos(sonda: String, date: Date) {
     self.functionCalled = true
   }
   

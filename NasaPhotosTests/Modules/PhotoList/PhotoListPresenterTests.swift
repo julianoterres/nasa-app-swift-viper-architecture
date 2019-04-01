@@ -19,15 +19,15 @@ class PhotoListPresenterTests: QuickSpec {
       
       context("and call methods input", {
         
-        it("photosDidFetch, check if is called", closure: {
+        it("didFetchPhotos, check if is called", closure: {
           let presenter = PhotoListPresenterInputSpy()
-          presenter.photosDidFetch(photos: [])
+          presenter.didFetchPhotos(photos: [])
           expect(presenter.functionCalled) == true
         })
         
-        it("errorPhotosDidFetch, check if is called", closure: {
+        it("errorDidFetchPhotos, check if is called", closure: {
           let presenter = PhotoListPresenterInputSpy()
-          presenter.errorPhotosDidFetch(message: "")
+          presenter.errorDidFetchPhotos(message: "")
           expect(presenter.functionCalled) == true
         })
         
@@ -35,9 +35,9 @@ class PhotoListPresenterTests: QuickSpec {
       
       context("and call methods output", {
         
-        it("photosDidFetch, check if is called", closure: {
+        it("fetchPhotos, check if is called", closure: {
           let presenter = PhotoListPresenterOutputSpy()
-          presenter.photosDidFetch(segmentIndex: 0)
+          presenter.fetchPhotos(segmentIndex: 0)
           expect(presenter.functionCalled) == true
         })
         
@@ -65,11 +65,11 @@ final class PhotoListPresenterInputSpy: PhotoListPresenterProtocolInput {
   
   var functionCalled = false
   
-  func photosDidFetch(photos: [PhotoView]) {
+  func didFetchPhotos(photos: [PhotoView]) {
     self.functionCalled = true
   }
   
-  func errorPhotosDidFetch(message: String) {
+  func errorDidFetchPhotos(message: String) {
     self.functionCalled = true
   }
   
@@ -83,7 +83,7 @@ final class PhotoListPresenterOutputSpy: PhotoListPresenterProtocolOutput {
   var interactor: PhotoListInteractorProtocolOutput?
   var viewController: PhotoListViewControllerProtocol?
   
-  func photosDidFetch(segmentIndex: Int) {
+  func fetchPhotos(segmentIndex: Int) {
     self.functionCalled = true
   }
   

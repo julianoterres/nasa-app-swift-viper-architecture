@@ -32,13 +32,11 @@ extension PhotoListInteractor: PhotoListInteractorProtocolOutput {
 extension PhotoListInteractor: PhotoListInteractorProtocolInput {
   
   func didFetchPhotos(photos: [PhotoApi]) {
-    
     if photos.isEmpty {
       self.date = self.date.adding(.day, -1)
       self.worker?.fetchPhotos(sonda: self.sonda, date: self.date)
       return
     }
-     
     let photos = photos.map ({ (photo) -> PhotoView in
       return PhotoView(
         urlImage: photo.img_src,
@@ -48,7 +46,6 @@ extension PhotoListInteractor: PhotoListInteractorProtocolInput {
     })
     self.date = Date()
     self.presenter?.didFetchPhotos(photos: photos)
-    
   }
   
   func errorDidFetchPhotos(message: String) {
