@@ -1,3 +1,10 @@
+//
+//  PhotoListWorker.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import Foundation
 
@@ -12,7 +19,6 @@ class PhotoListWorker {
 }
 
 // MARK: Methods of PhotoListWorkerProtocolInput
-
 extension PhotoListWorker: PhotoListWorkerProtocolOutput {
   
   func photosDidFetch(sonda: String, date: Date) {
@@ -25,7 +31,6 @@ extension PhotoListWorker: PhotoListWorkerProtocolOutput {
 }
 
 // MARK: Methods of NetworkProtocol
-
 extension PhotoListWorker: NetworkProtocolOutput {
   
   func success(response: Data) {

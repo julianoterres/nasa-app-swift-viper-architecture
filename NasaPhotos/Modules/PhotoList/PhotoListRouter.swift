@@ -1,12 +1,20 @@
+//
+//  PhotoListRouter.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import UIKit
 
 // MARK: Methods of PhotoListRouter
-
 class PhotoListRouter: PhotoListRouterWireframe {
   
+  // MARK: Variables of class
   weak var viewController: UIViewController?
   
+  // MARK: Methods of class
   func build() -> UIViewController {
     let api = API()
     let network = Network()
@@ -30,8 +38,9 @@ class PhotoListRouter: PhotoListRouterWireframe {
   }
   
   func pushToPhotoDetails(photo: PhotoView) {
-    let viewController = PhotoDetailRouter().build(photo: photo)
-    self.viewController?.navigationController?.pushViewController(viewController, animated: true)
+    if let viewController = PhotoDetailRouter().build(photo: photo) as? PhotoDetailViewController{
+      self.viewController?.navigationController?.pushViewController(viewController, animated: true)
+    }
   }
   
 }

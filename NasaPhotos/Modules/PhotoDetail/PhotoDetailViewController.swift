@@ -1,44 +1,44 @@
+//
+//  PhotoDetailViewController.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
+
+
 import UIKit
 
 // MARK: Methods of PhotoDetailViewController
-
 class PhotoDetailViewController: UIViewController {
   
   // MARK: Elements of class
-  private let img = UIImageView()
-  private let label = UILabel()
+  var img = UIImageView()
+  var label = UILabel()
   
   // MARK: Variables of class
   var photo: PhotoView?
   
-  
-  // MARK: Methods of init
-  
-  init() {
-    super.init(nibName: nil, bundle: nil)
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("\(#file) \(#function) not implemented")
-  }
-  
   // MARK: Methods of life cicle
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.createElements()
     self.configElements()
     self.setContrainsInElemens()
   }
+
+}
+
+// MARK: Methods of PhotoDetailViewControllerProtocol
+extension PhotoDetailViewController: PhotoDetailViewControllerProtocol {
   
   // MARK: Methods of class
-  
-  private func createElements() {
+  func createElements() {
     self.view.addSubview(self.label)
     self.view.addSubview(self.img)
   }
   
-  private func configElements() {
+  func configElements() {
     self.view.backgroundColor = .white
     let tap = UITapGestureRecognizer(target: self, action: #selector(changeCameraName))
     self.label.text = self.photo?.cameraName ?? ""
@@ -54,7 +54,7 @@ class PhotoDetailViewController: UIViewController {
     }
   }
   
-  private func setContrainsInElemens() {
+  func setContrainsInElemens() {
     self.label.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.label.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),

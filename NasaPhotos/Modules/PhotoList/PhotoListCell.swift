@@ -1,13 +1,21 @@
+//
+//  PhotoListCell.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import UIKit
 import Kingfisher
 
 // MARK: Methods of PhotoListCell
-
 class PhotoListCell: UICollectionViewCell {
   
+  // MARK: Elements of class
   private let img = UIImageView()
   
+  // MARK: Methods of class
   func setup(photo: PhotoView) {
     self.createElements()
     self.configElements(photo: photo)

@@ -1,8 +1,14 @@
+//
+//  PhotoListPresenter.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import Foundation
 
 // MARK: Methods of PhotoListPresenter
-
 class PhotoListPresenter {
   
   // MARK: Variables of class
@@ -14,7 +20,6 @@ class PhotoListPresenter {
 }
 
 // MARK: Methods of PhotoListPresenterProtocolOutput
-
 extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
   
   func photosDidFetch(segmentIndex: Int) {
@@ -28,7 +33,6 @@ extension PhotoListPresenter: PhotoListPresenterProtocolOutput {
 }
 
 // MARK: Methods of PhotoListPresenterProtocolInput
-
 extension PhotoListPresenter: PhotoListPresenterProtocolInput {
   
   func photosDidFetch(photos: [PhotoView]) {

@@ -1,22 +1,26 @@
+//
+//  Network.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import Alamofire
 
 // MARK: Methods of NetworkProtocolOutput
-
 protocol NetworkProtocolOutput: class {
   func success(response: Data)
   func failure(error: Error)
 }
 
 // MARK: Methods of NetworkProtocolInput
-
 protocol NetworkProtocolInput: class {
   var delegate: NetworkProtocolOutput? { get set }
   func request(url: URL, method: HTTPMethod, parameters: Parameters?)
 }
 
 // MARK: Methods of Network
-
 class Network: NetworkProtocolInput {
   
   weak var delegate: NetworkProtocolOutput?

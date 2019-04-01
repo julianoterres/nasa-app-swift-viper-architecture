@@ -9,8 +9,19 @@
 /* Begin PBXBuildFile section */
 		196E6028B779C27BFA78A7F9 /* Pods_NasaPhotosTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94D0BC83BA9BE9236ED076 /* Pods_NasaPhotosTests.framework */; };
 		3A0D1EC322515C3E0004B161 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3A0D1EC222515C3E0004B161 /* .gitignore */; };
+		3A0D1EC8225164020004B161 /* PhotoDetailRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0D1EC7225164020004B161 /* PhotoDetailRouterTests.swift */; };
 		3A314CA7224FDBAF003D3FBB /* PhotoListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A314CA6224FDBAF003D3FBB /* PhotoListProtocols.swift */; };
 		3A314CAA224FDBEC003D3FBB /* EnumDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A314CA9224FDBEC003D3FBB /* EnumDefinition.swift */; };
+		3A9A02C92251730700F6BA95 /* PhotoDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02C82251730700F6BA95 /* PhotoDetailViewControllerTests.swift */; };
+		3A9A02CD22518DF700F6BA95 /* PhotoApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02CC22518DF700F6BA95 /* PhotoApiTests.swift */; };
+		3A9A02CF22519B1C00F6BA95 /* PhotoCameraApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02CE22519B1C00F6BA95 /* PhotoCameraApiTests.swift */; };
+		3A9A02D122519B8D00F6BA95 /* PhotoListApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02D022519B8D00F6BA95 /* PhotoListApiTests.swift */; };
+		3A9A02D322519DAF00F6BA95 /* PhotoViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02D222519DAF00F6BA95 /* PhotoViewTests.swift */; };
+		3A9A02D522519E9600F6BA95 /* PhotoListRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02D422519E9600F6BA95 /* PhotoListRouterTests.swift */; };
+		3A9A02D72251AE5B00F6BA95 /* PhotoListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02D62251AE5B00F6BA95 /* PhotoListInteractorTests.swift */; };
+		3A9A02D92251B08D00F6BA95 /* PhotoListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02D82251B08D00F6BA95 /* PhotoListPresenterTests.swift */; };
+		3A9A02DB2251B38700F6BA95 /* PhotoListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02DA2251B38700F6BA95 /* PhotoListViewControllerTests.swift */; };
+		3A9A02DD2251B55B00F6BA95 /* PhotoListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9A02DC2251B55B00F6BA95 /* PhotoListWorkerTests.swift */; };
 		3AE6118022500009002776AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6117F22500009002776AB /* API.swift */; };
 		3AE6118222500286002776AB /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE6118122500286002776AB /* DictionaryExtension.swift */; };
 		3AE61184225006FF002776AB /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE61183225006FF002776AB /* PhotoView.swift */; };
@@ -24,7 +35,6 @@
 		3AFAF19B224C16AD005CF41C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF19A224C16AD005CF41C /* AppDelegate.swift */; };
 		3AFAF1A2224C16AE005CF41C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAF1A1224C16AE005CF41C /* Assets.xcassets */; };
 		3AFAF1A5224C16AE005CF41C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFAF1A3224C16AE005CF41C /* LaunchScreen.storyboard */; };
-		3AFAF1B0224C16AF005CF41C /* NasaPhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF1AF224C16AF005CF41C /* NasaPhotosTests.swift */; };
 		3AFAF1BB224C16AF005CF41C /* NasaPhotosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF1BA224C16AF005CF41C /* NasaPhotosUITests.swift */; };
 		3AFAF1D0224C1AC8005CF41C /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF1CF224C1AC8005CF41C /* PhotoListViewController.swift */; };
 		3AFAF1D2224C1AED005CF41C /* PhotoListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF1D1224C1AED005CF41C /* PhotoListInteractor.swift */; };
@@ -59,8 +69,19 @@
 		1F1F7EB61E9A3048585F9184 /* Pods-NasaPhotosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaPhotosUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NasaPhotosUITests/Pods-NasaPhotosUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2ED43140D9B646BF8737BDBF /* Pods-NasaPhotosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NasaPhotosUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NasaPhotosUITests/Pods-NasaPhotosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3A0D1EC222515C3E0004B161 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3A0D1EC7225164020004B161 /* PhotoDetailRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailRouterTests.swift; sourceTree = "<group>"; };
 		3A314CA6224FDBAF003D3FBB /* PhotoListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListProtocols.swift; sourceTree = "<group>"; };
 		3A314CA9224FDBEC003D3FBB /* EnumDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumDefinition.swift; sourceTree = "<group>"; };
+		3A9A02C82251730700F6BA95 /* PhotoDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewControllerTests.swift; sourceTree = "<group>"; };
+		3A9A02CC22518DF700F6BA95 /* PhotoApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoApiTests.swift; sourceTree = "<group>"; };
+		3A9A02CE22519B1C00F6BA95 /* PhotoCameraApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCameraApiTests.swift; sourceTree = "<group>"; };
+		3A9A02D022519B8D00F6BA95 /* PhotoListApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListApiTests.swift; sourceTree = "<group>"; };
+		3A9A02D222519DAF00F6BA95 /* PhotoViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTests.swift; sourceTree = "<group>"; };
+		3A9A02D422519E9600F6BA95 /* PhotoListRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListRouterTests.swift; sourceTree = "<group>"; };
+		3A9A02D62251AE5B00F6BA95 /* PhotoListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListInteractorTests.swift; sourceTree = "<group>"; };
+		3A9A02D82251B08D00F6BA95 /* PhotoListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListPresenterTests.swift; sourceTree = "<group>"; };
+		3A9A02DA2251B38700F6BA95 /* PhotoListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewControllerTests.swift; sourceTree = "<group>"; };
+		3A9A02DC2251B55B00F6BA95 /* PhotoListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListWorkerTests.swift; sourceTree = "<group>"; };
 		3AE6117F22500009002776AB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3AE6118122500286002776AB /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		3AE61183225006FF002776AB /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
@@ -77,7 +98,6 @@
 		3AFAF1A4224C16AE005CF41C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AFAF1A6224C16AE005CF41C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AFAF1AB224C16AF005CF41C /* NasaPhotosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NasaPhotosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3AFAF1AF224C16AF005CF41C /* NasaPhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaPhotosTests.swift; sourceTree = "<group>"; };
 		3AFAF1B1224C16AF005CF41C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AFAF1B6224C16AF005CF41C /* NasaPhotosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NasaPhotosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFAF1BA224C16AF005CF41C /* NasaPhotosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaPhotosUITests.swift; sourceTree = "<group>"; };
@@ -148,6 +168,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3A0D1EC4225163590004B161 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				3A0D1EC5225163680004B161 /* PhotoDetail */,
+				3A9A02CA22518D9C00F6BA95 /* PhotoList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		3A0D1EC5225163680004B161 /* PhotoDetail */ = {
+			isa = PBXGroup;
+			children = (
+				3A0D1EC7225164020004B161 /* PhotoDetailRouterTests.swift */,
+				3A9A02C82251730700F6BA95 /* PhotoDetailViewControllerTests.swift */,
+			);
+			path = PhotoDetail;
+			sourceTree = "<group>";
+		};
 		3A314CA8224FDBD9003D3FBB /* Definitions */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +201,30 @@
 				3AE611852250355B002776AB /* DateExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3A9A02CA22518D9C00F6BA95 /* PhotoList */ = {
+			isa = PBXGroup;
+			children = (
+				3A9A02CB22518DAB00F6BA95 /* Entities */,
+				3A9A02D62251AE5B00F6BA95 /* PhotoListInteractorTests.swift */,
+				3A9A02D82251B08D00F6BA95 /* PhotoListPresenterTests.swift */,
+				3A9A02D422519E9600F6BA95 /* PhotoListRouterTests.swift */,
+				3A9A02DA2251B38700F6BA95 /* PhotoListViewControllerTests.swift */,
+				3A9A02DC2251B55B00F6BA95 /* PhotoListWorkerTests.swift */,
+			);
+			path = PhotoList;
+			sourceTree = "<group>";
+		};
+		3A9A02CB22518DAB00F6BA95 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3A9A02CC22518DF700F6BA95 /* PhotoApiTests.swift */,
+				3A9A02CE22519B1C00F6BA95 /* PhotoCameraApiTests.swift */,
+				3A9A02D022519B8D00F6BA95 /* PhotoListApiTests.swift */,
+				3A9A02D222519DAF00F6BA95 /* PhotoViewTests.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		3AE6118722503E18002776AB /* Entities */ = {
@@ -214,7 +276,7 @@
 		3AFAF1AE224C16AF005CF41C /* NasaPhotosTests */ = {
 			isa = PBXGroup;
 			children = (
-				3AFAF1AF224C16AF005CF41C /* NasaPhotosTests.swift */,
+				3A0D1EC4225163590004B161 /* Modules */,
 				3AFAF1B1224C16AF005CF41C /* Info.plist */,
 			);
 			path = NasaPhotosTests;
@@ -390,6 +452,7 @@
 					};
 					3AFAF1AA224C16AF005CF41C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = 3AFAF196224C16AD005CF41C;
 					};
 					3AFAF1B5224C16AF005CF41C = {
@@ -457,6 +520,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NasaPhotos/Pods-NasaPhotos-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -464,6 +529,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -570,7 +637,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AFAF1B0224C16AF005CF41C /* NasaPhotosTests.swift in Sources */,
+				3A9A02D522519E9600F6BA95 /* PhotoListRouterTests.swift in Sources */,
+				3A9A02DD2251B55B00F6BA95 /* PhotoListWorkerTests.swift in Sources */,
+				3A9A02D122519B8D00F6BA95 /* PhotoListApiTests.swift in Sources */,
+				3A9A02D92251B08D00F6BA95 /* PhotoListPresenterTests.swift in Sources */,
+				3A9A02CF22519B1C00F6BA95 /* PhotoCameraApiTests.swift in Sources */,
+				3A9A02C92251730700F6BA95 /* PhotoDetailViewControllerTests.swift in Sources */,
+				3A9A02D322519DAF00F6BA95 /* PhotoViewTests.swift in Sources */,
+				3A9A02D72251AE5B00F6BA95 /* PhotoListInteractorTests.swift in Sources */,
+				3A0D1EC8225164020004B161 /* PhotoDetailRouterTests.swift in Sources */,
+				3A9A02CD22518DF700F6BA95 /* PhotoApiTests.swift in Sources */,
+				3A9A02DB2251B38700F6BA95 /* PhotoListViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +846,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = NasaPhotosTests/Info.plist;
@@ -779,6 +857,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.NasaPhotosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NasaPhotos.app/NasaPhotos";
@@ -791,6 +871,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XPQRN7QUXG;
 				INFOPLIST_FILE = NasaPhotosTests/Info.plist;
@@ -801,6 +882,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.julianoterres.NasaPhotosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NasaPhotos.app/NasaPhotos";

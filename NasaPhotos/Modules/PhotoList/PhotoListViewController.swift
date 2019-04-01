@@ -1,3 +1,10 @@
+//
+//  PhotoListViewController.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import UIKit
 
@@ -20,18 +27,7 @@ class PhotoListViewController: UIViewController {
   var presenter: PhotoListPresenterProtocolOutput?
   private var photos = [PhotoView]()
   
-  // MARK: Methods of init
-  
-  init() {
-    super.init(nibName: nil, bundle: nil)
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("\(#file) \(#function) not implemented")
-  }
-  
   // MARK: Methods of life cicle
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.createElements()
@@ -40,9 +36,13 @@ class PhotoListViewController: UIViewController {
     self.fetchPhotos()
   }
   
-  // MARK: Methods of class
+}
+
+// MARK: Methods of PhotoListViewControllerProtocol
+extension PhotoListViewController: PhotoListViewControllerProtocol {
   
-  private func createElements() {
+  // MARK: Methods of class
+  func createElements() {
     self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: UICollectionViewFlowLayout())
     self.loaderStackView.addArrangedSubview(self.labelLoader)
     self.loaderStackView.addArrangedSubview(self.loader)
@@ -54,7 +54,7 @@ class PhotoListViewController: UIViewController {
     self.view.addSubview(self.collectionView)
   }
   
-  private func configElements() {
+  func configElements() {
     self.view.backgroundColor = .white
     self.title = "Mars Rovers Photos"
     self.segmentedControl.selectedSegmentIndex = 0
@@ -88,41 +88,41 @@ class PhotoListViewController: UIViewController {
     self.self.viewRetry.isHidden = true
   }
   
-  private func setContrainsInElemens() {
+  func setContrainsInElemens() {
     self.segmentedControl.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.segmentedControl.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
       self.segmentedControl.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15),
       self.segmentedControl.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15),
       self.segmentedControl.heightAnchor.constraint(equalToConstant: 50)
-    ])
+      ])
     self.collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.collectionView.topAnchor.constraint(equalTo: self.segmentedControl.bottomAnchor, constant: 15),
       self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0),
       self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0),
       self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0)
-    ])
+      ])
     self.loaderStackView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.loaderStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
       self.loaderStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
       self.loaderStackView.heightAnchor.constraint(equalToConstant: 100)
-    ])
+      ])
     self.viewRetry.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.viewRetry.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
       self.viewRetry.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
       self.viewRetry.heightAnchor.constraint(equalToConstant: 170),
       self.viewRetry.widthAnchor.constraint(equalToConstant: 250)
-    ])
+      ])
     self.labelRetry.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.labelRetry.topAnchor.constraint(equalTo: self.viewRetry.topAnchor, constant: 0),
       self.labelRetry.leftAnchor.constraint(equalTo: self.viewRetry.leftAnchor, constant: 0),
       self.labelRetry.rightAnchor.constraint(equalTo: self.viewRetry.rightAnchor, constant: 0),
       self.labelRetry.bottomAnchor.constraint(equalTo: self.retryButton.topAnchor, constant: 0)
-    ])
+      ])
     self.retryButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       self.retryButton.topAnchor.constraint(equalTo: self.labelRetry.bottomAnchor, constant: 15),
@@ -130,7 +130,7 @@ class PhotoListViewController: UIViewController {
       self.retryButton.rightAnchor.constraint(equalTo: self.viewRetry.rightAnchor, constant: 0),
       self.retryButton.bottomAnchor.constraint(equalTo: self.viewRetry.bottomAnchor, constant: 0),
       self.retryButton.heightAnchor.constraint(equalToConstant: 70)
-    ])
+      ])
   }
   
   @objc func fetchPhotos() {
@@ -138,12 +138,6 @@ class PhotoListViewController: UIViewController {
     self.collectionView.isHidden = true
     self.presenter?.photosDidFetch(segmentIndex: self.segmentedControl.selectedSegmentIndex)
   }
-  
-}
-
-// MARK: Methods of PhotoListViewControllerProtocol
-
-extension PhotoListViewController: PhotoListViewControllerProtocol {
   
   func reloadPhotos(photos: [PhotoView]) {
     self.photos = photos
@@ -160,7 +154,6 @@ extension PhotoListViewController: PhotoListViewControllerProtocol {
 
 
 // MARK: Methods of UICollectionViewDataSource and UICollectionViewDelegate
-
 extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -182,7 +175,6 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
 }
 
 // MARK: Methods of UICollectionViewDelegateFlowLayout
-
 extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

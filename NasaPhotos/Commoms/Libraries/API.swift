@@ -1,6 +1,14 @@
+//
+//  API.swift
+//  NasaPhotos
+//
+//  Created by Juliano Terres on 02/04/19.
+//  Copyright © 2019 Juliano Terres. All rights reserved.
+//
 
 import Foundation
 
+// MARK: Methods of API
 final class API {
   
   private let baseUlr = "https://api.nasa.gov/mars-photos/api/v1/"
