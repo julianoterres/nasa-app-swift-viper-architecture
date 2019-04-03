@@ -27,22 +27,18 @@ class PhotoDetailViewControllerTests: QuickSpec {
         self.viewController.viewDidLoad()
       }
       
-      context("and after method", {
-        
-        it("viewDidLoad, label have text", closure: {
+      context("and after method viewDidLoad", {
+        it("shpuld labels have text", closure: {
           expect(self.viewController.label.text) == self.photo?.cameraName ?? ""
         })
-        
       })
       
-      context("and call method", {
-        
-        it("changeCameraName, label have chnage text", closure: {
+      context("and call method changeCameraName", {
+        it("should label have change text", closure: {
           self.viewController.changeCameraName()
           expect(self.viewController.label.text) == self.photo?.cameraNameFull ?? ""
           expect(self.viewController.label.isUserInteractionEnabled) == false
         })
-        
       })
       
     }

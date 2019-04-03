@@ -32,13 +32,11 @@ class PhotoListWorkerTests: QuickSpec {
         self.worker.api = self.api
       }
       
-      context("and call method", {
-        
-        it("fetchPhotos, should call the request of network", closure: {
+      context("and call method fetchPhotos", {
+        it("should call the request of network", closure: {
           self.worker.fetchPhotos(sonda: "", date: Date())
           expect(self.network?.functionCalled) == true
         })
-        
       })
       
     }

@@ -19,13 +19,11 @@ class APITests: QuickSpec {
     
     describe("When instance API") {
       
-      context("and call method", {
-        
-        it("urlRoversPhotos", closure: {
+      context("and call method urlRoversPhotos", {
+        it("should return the url", closure: {
           let url = self.api.urlRoversPhotos(sonda: "curiosity")
           expect(url) == URL(string: "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos")
         })
-        
       })
       
     }

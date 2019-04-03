@@ -17,7 +17,6 @@ class PhotoApiTests: QuickSpec {
     describe("When instance a object PhotoApiTests") {
       
       context("we need that", {
-        
         it("the values be this", closure: {
           let photoCameraApi = PhotoCameraApi(
             id: 1,
@@ -41,7 +40,6 @@ class PhotoApiTests: QuickSpec {
           expect(photoApi.camera?.full_name) == "Full Name"
           expect(photoApi.camera?.name) == "Name"
         })
-        
       })
       
     }

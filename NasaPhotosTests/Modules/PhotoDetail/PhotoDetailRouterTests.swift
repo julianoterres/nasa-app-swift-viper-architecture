@@ -29,13 +29,11 @@ class PhotoDetailRouterTests: QuickSpec {
         self.router = PhotoDetailRouter()
       }
       
-      context("and call method", {
-        
-        it("build, should return a UIViewController", closure: {
+      context("and call method build", {
+        it("should return a UIViewController", closure: {
           let viewController = self.router.build(photo: self.photo)
           expect(viewController).to(beAKindOf(UIViewController.self))
         })
-        
       })
       
     }

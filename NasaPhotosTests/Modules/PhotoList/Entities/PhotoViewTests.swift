@@ -17,7 +17,6 @@ class PhotoViewTests: QuickSpec {
     describe("When instance a object PhotoView") {
       
       context("we need that", {
-        
         it("the values be this", closure: {
           let photoView = PhotoView (
             urlImage: "http://google.com",
@@ -28,7 +27,6 @@ class PhotoViewTests: QuickSpec {
           expect(photoView.cameraName) == "Name"
           expect(photoView.cameraNameFull) == "Full Name"
         })
-        
       })
       
     }

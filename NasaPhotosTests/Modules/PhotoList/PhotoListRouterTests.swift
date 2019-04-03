@@ -28,13 +28,11 @@ class PhotoListRouterTests: QuickSpec {
         self.router.viewController = self.viewController
       }
       
-      context("and call method", {
-        
-        it("build, should return a viewController", closure: {
+      context("and call method build", {
+        it("should return a viewController", closure: {
           let viewController = self.router.build()
           expect(viewController).to(beAKindOf(UIViewController.self))
         })
-        
       })
       
     }

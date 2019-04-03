@@ -17,9 +17,8 @@ class DateExtensionTests: QuickSpec {
     
     describe("When use date extension") {
       
-      context("and call method", {
-        
-        it("convert_to_yyyy_mm_dd", closure: {
+      context("and call method convert_to_yyyy_mm_dd", {
+        it("should return a date formated", closure: {
           let dateFormatter = DateFormatter()
           dateFormatter.dateFormat = "dd/MM/yyyy"
           dateFormatter.timeZone = TimeZone(abbreviation: "GMT-4:00")
@@ -29,7 +28,6 @@ class DateExtensionTests: QuickSpec {
             fail("Failed create date")
           }
         })
-        
       })
       
     }

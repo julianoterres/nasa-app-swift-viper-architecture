@@ -33,29 +33,33 @@ class PhotoListPresenterTests: QuickSpec {
     
     describe("When instance presenter") {
       
-      context("and call method", {
-        
-        it("fetchPhotos, should call the fetchPhotos of interactor", closure: {
+      context("and call method fetchPhotos", {
+        it("should call the fetchPhotos of interactor", closure: {
           self.presenter?.fetchPhotos(segmentIndex: 0)
           expect(self.interactor?.functionCalled) == true
         })
-        
-        it("didSelectPhoto, should call the pushToPhotoDetails of router", closure: {
+      })
+      
+      context("and call method didSelectPhoto", {
+        it("should call the pushToPhotoDetails of router", closure: {
           let photo = PhotoView (urlImage: "http://google.com", cameraName: "Name", cameraNameFull: "Full Name")
           self.presenter?.didSelectPhoto(photo: photo)
           expect(self.router?.functionCalled) == true
         })
-        
-        it("didFetchPhotos, should call the reloadPhotos of viewController", closure: {
+      })
+      
+      context("and call method didFetchPhotos", {
+        it("should call the reloadPhotos of viewController", closure: {
           self.presenter?.didFetchPhotos(photos: [])
           expect(self.viewController?.functionCalled) == true
         })
-        
-        it("errorDidFetchPhotos, should call the errorFound of viewController", closure: {
+      })
+      
+      context("and call method errorDidFetchPhotos", {
+        it("should call the errorFound of viewController", closure: {
           self.presenter?.errorDidFetchPhotos(message: "")
           expect(self.viewController?.functionCalled) == true
         })
-        
       })
       
     }

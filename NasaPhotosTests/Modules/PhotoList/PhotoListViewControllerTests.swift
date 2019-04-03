@@ -27,14 +27,15 @@ class PhotoListViewControllerTests: QuickSpec {
         self.viewController.viewDidLoad()
       }
       
-      context("and call method", {
-        
-        it("fetchPhotos, should call the fetchPhotos of presenter", closure: {
+      context("and call method fetchPhotos", {
+        it("should call the fetchPhotos of presenter", closure: {
           self.viewController?.fetchPhotos()
           expect(self.presenter?.functionCalled) == true
         })
-        
-        it("reloadPhotos, should call the fetchPhotos of presenter", closure: {
+      })
+      
+      context("and call method reloadPhotos", {
+        it("should call the fetchPhotos of presenter", closure: {
           let photos = [PhotoView(urlImage: "http://google.com", cameraName: "Nome Camera", cameraNameFull: "Nome Camera Full Name")]
           self.viewController?.reloadPhotos(photos: photos)
           expect(self.viewController.photos.count) == 1
